@@ -26,9 +26,7 @@ Det er i denne filen eller i en tilsvarende at vi gjennom EntityManager må lage
 UserFacade: Denne er også automatisk opprettet og extender AbstractFacade. Den gjør at brukeren kan få tilgang til metoder for å gjøre 
 spørringer mot databasen?. 
 
-<LoginSessionBean> Dette er en såkalt EJB som tar av seg mye av logikken til applikasjonen. I dette tilfellet driver den med autentisering
-av brukeren ved at den bruker UserFacade beanen til å hente databasen før den bruker en hjelpeklasse til å finne ut om brukernavn og 
-passord er riktig. I tillegg inneholder den en del logikk for å videresende brukeren etter at man har logget inn. 
+LoginSessionBean: Dette er en såkalt EJB som tar av seg mye av logikken til applikasjonen. I dette tilfellet driver den med autentisering av brukeren ved at den bruker UserFacade beanen til å hente databasen før den bruker en hjelpeklasse til å finne ut om brukernavn og passord er riktig. I tillegg inneholder den en del logikk for å videresende brukeren etter at man har logget inn. 
 
 ## Entities
 
