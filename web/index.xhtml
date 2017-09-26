@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Main Page</title>
+        
+        <!-- Eksempel på hvordan hente ut CSS, TODO: Finne ut hvordan style linkene, kan ikke være vanlige a href linker-->
+        <link href="./Resources/Toolbar.css" rel="stylesheet" type="text/css"/> 
+
+    </h:head>
+    <h:body>
+
+    <f:view>
+      
+        <h:form>  
+            <h1>Hei og velkommen til Bid-application</h1> 
+            
+            <!-- Her skal brukeren velge enten å gå til brukersiden eller å plassere et bid på et produkt. Begge handlingene krever innlogging -->
+            <h:link value="Når brukeren trykker på placebid på et produkt" outcome="secured/placebid">
+            <f:param name="newbid" value="true"/>
+            </h:link>
+            <br/><br/>
+            <h:link value="User Page" outcome="secured/userpage">
+            <f:param name="validateuser" value="true"/>
+            </h:link>
+        </h:form>
+      
+    </f:view>
+    </h:body>
+</html>
+
