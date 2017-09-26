@@ -1,6 +1,5 @@
 # BiddingOblig
 
-# Struktur
 
 ## Nettsider
 
@@ -17,26 +16,26 @@ Som dere kan se under <p>Configuration Files</p> i web.xml er det en del informa
 <session-timeout>30</session-timeout> = En session varer i 30min, dvs at brukeren kun er innlogget i 30min. (tror jeg). 
   
   
-##Database og Enterprise Java Beans
+## Database og Enterprise Java Beans
 
 Her er det tre filer:
 
-<p>AbstractFacade</p>: Den er automatisk opprettet og lager en entitymanager som gjør spørringer mot databasen.
+AbstractFacade: Den er automatisk opprettet og lager en entitymanager som gjør spørringer mot databasen.
 Det er i denne filen eller i en tilsvarende at vi gjennom EntityManager må lage JPQL opp mot databasen. 
 
-<p>UserFacade</p>: Denne er også automatisk opprettet og extender AbstractFacade. Den gjør at brukeren kan få tilgang til metoder for å gjøre 
+UserFacade: Denne er også automatisk opprettet og extender AbstractFacade. Den gjør at brukeren kan få tilgang til metoder for å gjøre 
 spørringer mot databasen?. 
 
 <LoginSessionBean> Dette er en såkalt EJB som tar av seg mye av logikken til applikasjonen. I dette tilfellet driver den med autentisering
 av brukeren ved at den bruker UserFacade beanen til å hente databasen før den bruker en hjelpeklasse til å finne ut om brukernavn og 
 passord er riktig. I tillegg inneholder den en del logikk for å videresende brukeren etter at man har logget inn. 
 
-##Entities
+## Entities
 
 UserInstance = Dette er da en gjenspeiling av databasen bare i Java. Ellers selvforklarende. For å legge ting til i databasen oppretter vi 
 en instans av UserIntance med alle dataene også sender vi den til databasen. 
 
-##Handlers
+## Handlers
 
 Dette er et navn jeg fant opp. Her legger vi alle JSF beansene som skal snakke med viewet og videreformidle ting til EJBene. 
 
@@ -46,13 +45,13 @@ at sesjonen til brukeren er logget inn.
 
 UserHandler = Brukes for å legge inn instanser av UserInstance i databasen samt hente informasjon fra databasen. 
 
-##Helpers
+## Helpers
 
 Her legger vi all logikk som skal regne ut ting. Dvs filtrering av tabeller m.m. 
 
 ValidateUserHelper = Sjekker om brukernavnet og passordet eksisterer i databasen. 
 
-#Navigaring
+# Navigaring
 
 Dette er kanskje det mest komplekse i applikasjonen hittil. Som nevnt tidligere i web.xml må alle forsøk på tilgang til nettsidene
 under secured mappen innom et filter. Dette er da LoginFilter. Det denne gjør er å hente ut sessjonen av LoginHandler, hvor den sjekker om 
