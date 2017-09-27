@@ -21,3 +21,11 @@ li a {
 li a:hover {
     background-color: #111;
 }
+
+link {
+    float: left;
+}
+
+h1 {
+    color: blue; 
+}
