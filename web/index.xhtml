@@ -5,6 +5,7 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Møgs</title>
+        <link href="./Resources/css/Toolbar.css" rel="stylesheet" type="text/css"/>
         
         <link href="./Resources/css/styles.css" rel="stylesheet" type="text/css"/>
     </h:head>
@@ -16,7 +17,32 @@
     <f:view>
       
         <!-- Denne vil bli erstatta av Michelle sin meny -->
-        <div id="menu"><h1>Menylinje</h1></div>
+        <!-- NAVIGATION BAR -->
+        <div id="nav">
+            <div id="nav_wrapper">
+                
+                    <div id="dropdown"><a href="#">☰</a>
+                        <ul>
+                        
+                            <li><h:link value="Home" outcome="secured/userpage">
+                                    <f:param name="validateuser" value="true"/>
+                                </h:link></li>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Create user</a></li>
+                        
+                        </ul>
+                    
+                    
+                    </div>
+                    <div id="logo"><img src="./Resources/logo.png"/>
+                    </div>
+                    <div id="namenav"><a href="#">Hey Michelle</a>
+                    </div>
+                
+            </div> 
+            
+        </div>
+        <!-- END NAV BAR -->
         
         <!-- Usikker på om vi treng form-taggen? -->
         <h:form>  
