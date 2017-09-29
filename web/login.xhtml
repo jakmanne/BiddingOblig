@@ -17,6 +17,34 @@ and open the template in the editor.
         
     </head>
     <body>
+        <!-- NAVIGATION BAR -->
+        <div id="nav">
+            <div id="nav_wrapper">
+                
+                    <div id="dropdown"><a href="#">☰</a>
+                        <ul>
+                        
+                            <li><h:link value="Home" outcome="secured/userpage">
+                                    <f:param name="validateuser" value="true"/>
+                                </h:link></li>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Create user</a></li>
+                        
+                        </ul>
+                    
+                    
+                    </div>
+                    <div id="logo"><img src="./Resources/logo.png"/>
+                    </div>
+                    <div id="namenav"><a href="#">Hey Michelle</a>
+                    </div>
+                
+            </div> 
+            
+        </div>
+        <!-- END NAV BAR -->
+        
+        
         <h1 class="overskrift">Login</h1>
         <h3>You have to be logged in to view this page</h3>
         <h:form>
