@@ -1,36 +1,11 @@
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover {
-    background-color: #111;
-}
-
-link {
-    float: left;
-}
 
 body {
-  margin      : 30px;
-  font-family : 'Raleway',
-                sans-serif;
-  line-height : 1;
+  padding: 0;
+  margin: 0;
+  overflow-y: scroll;
+  font-family: Arial;
+  font-size: 18px;
+
 }
 
 .overskrift {
@@ -41,4 +16,79 @@ body {
                 sans-serif;
   font-size   : 1.5em;
   font-weight : bold;
+}
+
+#nav {
+    background-color: #222;
+    height: 50px;
+}
+#nav_wrapper {
+    margin: 0 auto;
+    position: relative;
+    
+}
+#nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    min-width: 200px;
+}
+#dropdown {
+    display: inline-block;
+}
+#dropdown:hover {
+    background-color: #333;
+}
+#dropdown a {
+    color: #CCC;
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+}
+#dropdown:hover ul {
+    display: block;
+}
+#dropdown ul {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    border: 5px solid #222;
+    border-top: 0;
+    margin-left: -5px;
+}
+#dropdown ul li {
+    display: block;
+}
+#dropdown ul li a:hover {
+    color: #699;
+}
+#namenav{
+    text-align: right;
+    margin-right: 10px;
+    float: right;
+    position: absolute;
+    right: 0;
+    top: 15px;
+    list-style-type: none;
+    
+}
+#namenav a {
+    color: #CCC;
+    display: block;
+    text-decoration: none;
+}
+#logo{
+    height: 60px;
+    left: 0;
+    right: 0;
+    width: 150px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+}
+#logo img{
+    height: 100%;
+    
+    
 }
