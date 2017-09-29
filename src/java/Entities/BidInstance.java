@@ -10,56 +10,46 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  *
  * @author Jakob
  */
 @Entity
-public class UserInstance implements Serializable {
+public class BidInstance implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id; 
-    
-    
-    private String Username;
-    private String Password;  
-    private String email; 
+    private Long id;
 
- 
-    public String getPassword() {
-        return Password;
+    
+    private ProductInstance product; 
+    private UserInstance user; 
+
+
+    public ProductInstance getProduct() {
+        return product;
     }
 
-    public void setPassword(String Password) {
-        this.Password = Password;
+    public void setProduct(ProductInstance product) {
+        this.product = product;
     }
 
+    public UserInstance getUser() {
+        return user;
+    }
+
+    public void setUser(UserInstance user) {
+        this.user = user;
+    }
+    
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-    
-      public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
-     public String getUsername() {
-        return Username;
-    }
-
-    public void setUsername(String Username) {
-        this.Username = Username;
     }
 
     @Override
@@ -72,10 +62,10 @@ public class UserInstance implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof UserInstance)) {
+        if (!(object instanceof BidInstance)) {
             return false;
         }
-        UserInstance other = (UserInstance) object;
+        BidInstance other = (BidInstance) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -84,7 +74,7 @@ public class UserInstance implements Serializable {
 
     @Override
     public String toString() {
-        return "Entities.User[ id=" + id + " ]";
+        return "Entities.BidInstance[ id=" + id + " ]";
     }
     
 }
