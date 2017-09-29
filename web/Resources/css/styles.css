@@ -1,0 +1,212 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+link {
+    float: left;
+    color: black; 
+}
+
+body {
+  margin      : 30px;
+  font-family : 'Raleway',
+                sans-serif;
+  line-height : 1.2;
+}
+
+#menu {
+    background-color: lightblue;
+    margin-top: -18px;
+    padding-top: 6px; 
+    padding-bottom: 6px;
+    padding-left: 20px;
+}
+
+/*---------- For index -----------------------*/
+
+img {
+    padding: 10px;
+    width: 42px;
+    height: 42px;
+}
+
+.info {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2em; 
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.description {
+    font-size: 0.9em;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.bid {
+  font-family : 'Raleway',
+                sans-serif;
+  font-size   : 1em;
+  padding-top: 15px;
+  padding-right: 10px;
+  font-weight: bold;
+    text-align: right;
+}
+
+.item {
+  display           : flex;
+  width             : 90%;
+  margin            : auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding           : 10px;
+  flex-direction    : row;
+  -webkit-flex-wrap : wrap;
+  flex-wrap         : wrap;
+  justify-content   : space-between;
+    
+}
+
+.venstre_boks {
+    display: flex;
+    width: 60%
+}
+
+.hover:focus {
+  background-color : #F2F2F2;
+}
+
+.hover:hover {
+  box-shadow        : 0 0 15px -10px gray;
+  box-shadow        : 0 0 10px -2px;
+  -webkit-transform : scale(1.03, 1.03);
+  transition        : all 0.15s linear;
+  cursor            : pointer;
+}
+
+.searchbar {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 20px;
+    margin-top: 2px;
+  width: 90%;
+}
+
+.input {
+    width: 55%;
+    margin: auto;
+    height: 25px;
+}
+
+.category {
+    width: 30%;
+    height: 30px;
+    margin: auto;
+}
+
+.btnSearch {
+    width: auto;
+    height: 30px;
+    margin: auto;
+}
+
+/*---------------FOR LOGIN----------------------*/
+
+.container {
+  display           : flex;
+  width             : 35%;
+  margin            : auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding           : 10px;
+  flex-direction    : column;
+  -webkit-flex-wrap : wrap;
+  flex-wrap         : wrap;
+  text-align: center;
+}
+
+.container a {
+    font-size: 0.78em; 
+    color: black; 
+}
+
+.container a:hover {
+
+    color: skyblue;
+}
+
+.userinfo {
+    display: flex;
+    align-content: center;  
+    padding-bottom: 10px;
+}
+
+.userinfo input {
+    width: 50%;
+    height: 20px;
+}
+.userinfo label {
+    width: 30%;
+    text-align: left;
+    padding-top: 4px;
+    padding-right: 4px;
+}
+
+.btns_Form {
+    width: 100%;
+    padding-top: 4px;
+}
+
+.btnForm {
+    background-color: white;
+    color: black;
+    border: 0.5px solid gray;
+    border-radius: 4px;
+    padding: 6px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 11px;
+    margin: 2px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-bottom: 10px; 
+    margin-top: 8px; 
+}
+
+.btnForm:hover {
+    background-color: grey;
+}
+
+.btnActive {
+    background-color: lightgrey;
+}
+

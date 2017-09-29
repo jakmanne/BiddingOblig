@@ -4,9 +4,159 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
+        <title>Møgs</title>
+        
+        <link href="./Resources/css/styles.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+
+    <!-- Har lagt inn samme kode fire gongar for å få litt "dummydata", men vil 
+           på sikt erstatte med ei løkke som tar inn items frå db. -->
+        
+    <f:view>
+      
+        <!-- Denne vil bli erstatta av Michelle sin meny -->
+        <div id="menu"><h1>Menylinje</h1></div>
+        
+        <!-- Usikker på om vi treng form-taggen? -->
+        <h:form>  
+            
+            <!-- Div som inneheld søkebar på toppen av sida. -->
+            <div class="searchbar">
+                
+                <input class="input" type="text" placeholder="Type your search here.."/>
+                
+                
+                <!--Kan her enten legge til kategoriar manuelt, eller hente frå db om vi vil seinare-->
+                <select class="category">
+                    <option value="unspecified">---</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="art">Art</option>
+                    <option value="sports">Sporting Goods</option>
+                    <option value="interior">Interior</option>
+                    <option value="motor">Motor</option>
+                </select>
+
+                <h:button class="btnForm" value="Search" outcome="secured/placebid">
+                    <!--Skal linke til ei anna side på sikt, la berre inn ein link no-->
+                    <f:param name="newbid" value="true"/>
+                </h:button>
+            </div>
+            
+            
+<!-- Div som vil innehalde samling av alle produkt. -->
+<div id="itemsDiv">
+    
+    
+    <h:link outcome="secured/placebid">
+    <div class="item hover">
+        <div class="venstre_boks">
+            <div class="bilde">
+                <img src="./Resources/img/whitebox.jpg"  alt="Item"/>
+            </div>
+               
+            <div class="info">
+                <div class="title">Ting 1</div>
+                <div class="description">Produktbeskrivelser skal gi en forståelse av produktets hensikt, egenskap, utseende og leveringsformat.
+                Beskrivelsen skal bidra til at det blir mulig å identifisere alle aktiviteter for å fremskaffe, evaluere og godkjenne produktet. Beskrivelsen bør definere hvem som vil bruke produktet og hvilke kvalitetskriterier og -tole</div>
+            </div>
+            
+        </div>
+        <div class="hogre_boks">
+            <div class="bid">Highest bid: 0$</div>
+            
+            <!-- Vil her legge til unik id, som lar oss legge inn tid som gjenstår av budrunde.-->
+            <div class="bid">Remaining time: 0 min</div>
+        </div>    
+    </div>  
+    <f:param name="newbid" value="true"/>
+    </h:link>
+ 
+    
+    <!-- Item 2-->
+    <h:link outcome="secured/placebid">
+    <div class="item hover">
+        <div class="venstre_boks">
+            <div class="bilde">
+                <img src="./Resources/img/whitebox.jpg" alt="Item"/>
+            </div>
+               
+            <div class="info">
+                <div class="title">Ting 2</div>
+                <div class="description">Produktbeskrivelser skal gi en forståelse av produktets hensikt, egenskap, utseende og leveringsformat.</div>
+            </div>
+        </div>     
+        <div class="hogre_boks">
+            <div class="bid">Highest bid: 0$</div>
+            <div class="bid">Remaining time: 0 min</div>
+        </div>
+    </div> 
+    <f:param name="newbid" value="true"/>
+    </h:link>
+        
+        
+   
+    <!-- Item 3 -->
+    <h:link outcome="secured/placebid">
+    <div class="item hover">
+        <div class="venstre_boks">
+            <div class="bilde">
+                <img src="./Resources/img/whitebox.jpg" alt="Item"/>
+            </div>
+               
+            <div class="info">
+                <div class="title">Ting 3</div>
+                <div class="description">Produktbeskrivelser skal gi en forståelse av produktets hensikt, egenskap, utseende og leveringsformat.</div>
+            </div>
+            
+        </div>
+        <div class="hogre_boks">
+            <div class="bid">Highest bid: 0$</div>
+            <div class="bid">Remaining time: 0 min</div>
+        </div>
+    </div> 
+    <f:param name="newbid" value="true"/>
+    </h:link>
+        
+    
+    <!-- Item 4 -->
+    <h:link outcome="secured/placebid">
+    <div class="item hover">
+        <div class="venstre_boks">
+            <div class="bilde">
+                <img src="./Resources/img/whitebox.jpg" alt="Item"/>
+            </div>
+               
+            <div class="info">
+                <div class="title">Ting 4</div>
+                <div class="description">Produktbeskrivelser skal gi en forståelse av produktets hensikt, egenskap, utseende og leveringsformat.</div>
+            </div>
+        </div>
+        <div class="hogre_boks">
+            <div class="bid">Highest bid: 0$</div>
+            <div class="bid">Remaining time: 0 min</div>
+        </div>
+    </div>     
+    <f:param name="newbid" value="true"/>
+    </h:link>
+</div>           
+
+        </h:form>      
+    </f:view>
+    </h:body>
+</html>
+
+<!-- Gammal kode som låg inne frå før. 
+
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
         <title>Main Page</title>
         
-        <!-- Eksempel på hvordan hente ut CSS, TODO: Finne ut hvordan style linkene, kan ikke være vanlige a href linker-->
         <link href="./Resources/css/Toolbar.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
@@ -16,10 +166,9 @@
         <h:form>  
             <h1>Hei og velkommen til Bid-application</h1> 
             
-            <!-- Her skal brukeren velge enten å gå til brukersiden eller å plassere et bid på et produkt. Begge handlingene krever innlogging -->
-            <h:link value="Når brukeren trykker på placebid på et produkt" outcome="secured/placebid">
+            <h:button value="produkt" outcome="secured/placebid">
             <f:param name="newbid" value="true"/>
-            </h:link>
+            </h:button>
             <br/><br/>
             <h:link value="User Page" outcome="secured/userpage">
             <f:param name="validateuser" value="true"/>
@@ -29,4 +178,4 @@
     </f:view>
     </h:body>
 </html>
-
+-->
