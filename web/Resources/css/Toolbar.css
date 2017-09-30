@@ -92,3 +92,12 @@ body {
     
     
 }
+#placebidtext{
+    border: 1px solid grey;
+    margin: 30px;
+    padding: 20px;
+}
+#placebidtext img{
+    display: block;
+    width: 400px;
+}
