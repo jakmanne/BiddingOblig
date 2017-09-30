@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class ValidateUserHelper {
     
+ private UserInstance userTemp;  
 
   public ValidateUserHelper(){
       
@@ -38,11 +39,21 @@ public class ValidateUserHelper {
                 for(UserInstance users: temp){
                     if(users.getPassword().equals(password)){
                         passwordCorrect = true;
+                        userTemp = users; 
                         break; 
                     }
                 }
             }
         }
+        
          return usernameCorrect && passwordCorrect; 
+    }
+
+    public UserInstance getUserTemp() {
+        return userTemp;
+    }
+
+    public void setUserTemp(UserInstance userTemp) {
+        this.userTemp = userTemp;
     }
 } 

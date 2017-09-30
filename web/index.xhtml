@@ -2,12 +2,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Møgs</title>
         <link href="./Resources/css/Toolbar.css" rel="stylesheet" type="text/css"/>
         
         <link href="./Resources/css/styles.css" rel="stylesheet" type="text/css"/>
+        <f:metadata>
+            <f:viewAction action="#{searchHandler.allproducts()}" />
+</f:metadata>
     </h:head>
     <h:body>
 
@@ -73,101 +77,30 @@
 <!-- Div som vil innehalde samling av alle produkt. -->
 <div id="itemsDiv">
     
-    
-    <h:link outcome="secured/placebid">
-    <div class="item hover">
-        <div class="venstre_boks">
-            <div class="bilde">
-                <img src="./Resources/img/whitebox.jpg"  alt="Item"/>
-            </div>
-               
-            <div class="info">
-                <div class="title">Ting 1</div>
-                <div class="description">Produktbeskrivelser skal gi en forståelse av produktets hensikt, egenskap, utseende og leveringsformat.
-                Beskrivelsen skal bidra til at det blir mulig å identifisere alle aktiviteter for å fremskaffe, evaluere og godkjenne produktet. Beskrivelsen bør definere hvem som vil bruke produktet og hvilke kvalitetskriterier og -tole</div>
-            </div>
-            
-        </div>
-        <div class="hogre_boks">
-            <div class="bid">Highest bid: 0$</div>
-            
-            <!-- Vil her legge til unik id, som lar oss legge inn tid som gjenstår av budrunde.-->
-            <div class="bid">Remaining time: 0 min</div>
-        </div>    
-    </div>  
-    <f:param name="newbid" value="true"/>
-    </h:link>
- 
-    
-    <!-- Item 2-->
+<ui:repeat value="#{searchHandler.allProducts}" var="products">
     <h:link outcome="secured/placebid">
     <div class="item hover">
         <div class="venstre_boks">
             <div class="bilde">
                 <img src="./Resources/img/whitebox.jpg" alt="Item"/>
-            </div>
-               
+            </div>             
             <div class="info">
-                <div class="title">Ting 2</div>
-                <div class="description">Produktbeskrivelser skal gi en forståelse av produktets hensikt, egenskap, utseende og leveringsformat.</div>
-            </div>
-        </div>     
-        <div class="hogre_boks">
-            <div class="bid">Highest bid: 0$</div>
-            <div class="bid">Remaining time: 0 min</div>
-        </div>
-    </div> 
-    <f:param name="newbid" value="true"/>
-    </h:link>
-        
-        
-   
-    <!-- Item 3 -->
-    <h:link outcome="secured/placebid">
-    <div class="item hover">
-        <div class="venstre_boks">
-            <div class="bilde">
-                <img src="./Resources/img/whitebox.jpg" alt="Item"/>
-            </div>
-               
-            <div class="info">
-                <div class="title">Ting 3</div>
-                <div class="description">Produktbeskrivelser skal gi en forståelse av produktets hensikt, egenskap, utseende og leveringsformat.</div>
-            </div>
-            
-        </div>
-        <div class="hogre_boks">
-            <div class="bid">Highest bid: 0$</div>
-            <div class="bid">Remaining time: 0 min</div>
-        </div>
-    </div> 
-    <f:param name="newbid" value="true"/>
-    </h:link>
-        
-    
-    <!-- Item 4 -->
-    <h:link outcome="secured/placebid">
-    <div class="item hover">
-        <div class="venstre_boks">
-            <div class="bilde">
-                <img src="./Resources/img/whitebox.jpg" alt="Item"/>
-            </div>
-               
-            <div class="info">
-                <div class="title">Ting 4</div>
-                <div class="description">Produktbeskrivelser skal gi en forståelse av produktets hensikt, egenskap, utseende og leveringsformat.</div>
+                <div class="title">#{products.productName}</div>
+                <div class="description">#{products.features}</div>
             </div>
         </div>
         <div class="hogre_boks">
             <div class="bid">Highest bid: 0$</div>
-            <div class="bid">Remaining time: 0 min</div>
+            <div class="bid">#{products.timestamp.toString()}</div>
         </div>
     </div>     
     <f:param name="newbid" value="true"/>
     </h:link>
-</div>           
+ <br />
+</ui:repeat>
+</div>  
 
-        </h:form>      
+     </h:form>      
     </f:view>
     </h:body>
 </html>

@@ -77,14 +77,6 @@ public class ProductInstance implements Serializable {
     public BidInstance getCurrentBid() {
         return currentBid;
     }
-    
-    public String getProductname() {
-        return productName;
-    }
-
-    public void setProductname(String productname) {
-        this.productName = productname;
-    }
 
     public String getPicture() {
         return picture;

@@ -9,12 +9,32 @@ and open the template in the editor.
         xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
-        <title>TODO supply a title</title>
+        <title>Create product</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
         <h:form>
-        <div>Her skal brukeren opprette nytt produkt</div>
+         <h1>Create new product</h1>
+         <h:outputLabel value="Productname"/><h:inputText value="#{productHandler.product.productName}"/>
+          <br/><br/>
+          <h:outputLabel value="Picture"/><h:inputText value="#{productHandler.product.picture}"/>
+          <br/><br/>
+          <h:outputLabel value="Features"/><h:inputText value="#{productHandler.product.features}"/>
+          <br/><br/>
+         Category <h:selectOneMenu value="#{productHandler.product.category}">
+                <f:selectItem itemValue="Electronics" itemLabel="Electronics" />
+                <f:selectItem itemValue="Fashion" itemLabel="Fashion" />
+                <f:selectItem itemValue="Art" itemLabel="Art" />
+                <f:selectItem itemValue="Sporting" itemLabel="Sporting" />
+                <f:selectItem itemValue="Interior" itemLabel="Interior" />
+                <f:selectItem itemValue="Motor" itemLabel="Motor" />
+        </h:selectOneMenu>
+          <br/><br/>
+          Write Timestamp in single minutes, eg "1" for 1 minute bidding time. <br/><br/>
+          <h:outputLabel value="Bidding Time"/><h:inputText value="#{productHandler.dateString}"/>
+          <br/><br/>
+          <h:commandButton id="productcreate" value="Create new product" action="#{productHandler.createProduct()}" />
+          <h:messages/>
         <h:commandButton id="button" value="Logout" action="#{loginHandler.doLogout()}" />
         </h:form>
     </body>
