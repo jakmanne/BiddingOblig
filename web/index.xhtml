@@ -9,7 +9,8 @@
         <link href="./Resources/css/Toolbar.css" rel="stylesheet" type="text/css"/>
         
         <link href="./Resources/css/styles.css" rel="stylesheet" type="text/css"/>
-        <f:metadata>
+        
+ <f:metadata>
             <f:viewAction action="#{searchHandler.allproducts()}" />
 </f:metadata>
     </h:head>
@@ -77,7 +78,7 @@
 <!-- Div som vil innehalde samling av alle produkt. -->
 <div id="itemsDiv">
     
-<ui:repeat value="#{searchHandler.allProducts}" var="products">
+    <ui:repeat value="#{searchHandler.allProducts}" var="products">
     <h:link outcome="secured/placebid">
     <div class="item hover">
         <div class="venstre_boks">
@@ -98,9 +99,11 @@
     </h:link>
  <br />
 </ui:repeat>
-</div>  
+    
+  
+</div>           
 
-     </h:form>      
+        </h:form>      
     </f:view>
     </h:body>
 </html>
