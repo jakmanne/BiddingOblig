@@ -101,3 +101,59 @@ body {
     display: block;
     width: 400px;
 }
+#personandstars{
+    border: 1px solid grey;
+    padding: 20px;
+    position: relative;
+    height: 250px;
+    
+}
+#sellerimg{
+    position: absolute;
+    width: 150px;
+    padding: 10px;
+    left: 50px;
+}
+#mediumheaders{
+    font-family: sans-serif;
+    font-size: 1em;
+    
+}
+#smallheaders{
+    font-family: sans-serif;
+    font-size: 13px;
+    position: absolute;
+    left: 35px;
+}
+#starsimg{
+    width: 120px;
+    padding: 10px;
+    position: absolute;
+    right: 90px;
+    
+    
+}
+#starratings{
+    position: absolute;
+    font-size: 12px;
+    right: 40px;
+    top: 82px;
+}
+#purchasedproduct{
+    border: 1px solid grey;
+    margin: 30px; 
+    position: relative;
+    height: 131px;
+}
+#boughtproductpic{
+    position: absolute;
+    width: 150px;
+    padding: 10px;
+    position: absolute;
+    border-right: 1px solid grey; 
+}
+#sellerproductinfo{
+    font-size: 12px;
+    left: 210px;
+    position: absolute;
+}

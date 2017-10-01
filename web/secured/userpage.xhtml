@@ -9,10 +9,71 @@ and open the template in the editor.
         xmlns:h="http://xmlns.jcp.org/jsf/html"
         xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
-        <title>User Page</title>
+        <title>Userpage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="../Resources/css/Toolbar.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <!-- NAVIGATION BAR -->
+        <div id="nav">
+            <div id="nav_wrapper">
+                
+                    <div id="dropdown"><a href="#">☰</a>
+                        <ul>
+                        
+                            <li><h:link value="Home" outcome="secured/userpage">
+                                    <f:param name="validateuser" value="true"/>
+                                </h:link></li>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Create user</a></li>
+                        
+                        </ul>
+                    
+                    
+                    </div>
+                    <div id="logo"><img src="../Resources/logo.png"/>
+                    </div>
+                    <div id="namenav"><a href="#">Hey Michelle</a>
+                    </div>
+                
+            </div> 
+            
+        </div>
+        <!-- END NAV BAR -->
+        
+        <div id="personandstars">
+            <p id="mediumheaders"><strong><span>Example Person </span> [<span>4,7</span>] </strong></p>
+            <img id="sellerimg" src="../Resources/img/seller.png"/>
+            <img id="starsimg" src="../Resources/img/stars.png"/>
+            <div id="starratings"> 
+                <p><span>12</span> votes</p>
+                <p><span>12</span> votes</p>
+                <p><span>12</span> votes</p>
+                <p><span>12</span> votes</p>
+                <p><span>12</span> votes</p>
+            </div>
+                 
+            
+        </div>
+        <p id="smallheaders"><strong><span>Purchased products </span></strong></p>
+        <div id="purchasedproduct">
+            <img id="boughtproductpic" src="../Resources/img/s6edge.jpg"/>
+            <div id="sellerproductinfo">
+                <p><strong><span>Samsung s6 edge</span></strong></p>
+                
+                <p>Bid: $<span>100</span></p>
+                <br/>
+                <p>Rate seller:
+                <select id="mindropdown">
+                <option value="5">5 stars</option>
+                <option value="4">4 stars</option>
+                <option value="3">3 stars</option>
+                <option value="2">2 stars</option>
+                <option value="1">1 star</option></select>
+                    <button>Rate</button>
+                </p>
+            </div>
+        </div>
         <div>Her kommer det brukerinformasjon og produkter som jeg har kjøpt hvor jeg kan rate de</div>
         <p>Registrer et nytt produkt</p>
          <h:link value="Create New Product" outcome="/secured/newproduct?faces-redirect=true">
