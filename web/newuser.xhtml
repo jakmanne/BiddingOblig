@@ -9,22 +9,64 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Create new user</title>
         <link href="./Resources/css/Toolbar.css" rel="stylesheet" type="text/css"/>
+        <link href="./Resources/css/styles.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
+        
+        <!-- NAVIGATION BAR -->
+        <div id="nav">
+            <div id="nav_wrapper">
+                
+                    <div id="dropdown"><a href="#">☰</a>
+                        <ul>
+                        
+                            <li><h:link value="Home" outcome="secured/userpage">
+                                    <f:param name="validateuser" value="true"/>
+                                </h:link></li>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Create user</a></li>
+                        
+                        </ul>
+                    
+                    
+                    </div>
+                    <div id="logo"><img src="./Resources/logo.png"/>
+                    </div>
+                
+            </div> 
+            
+        </div>
+        <!-- END NAV BAR -->
+        
+        
     <f:view>
-        <h:form>
-            <h1>Create new user </h1>
-            <h:outputLabel value="Username"/><h:inputText value="#{userHandler.user.username}"/>
-            <br/><br/>
-            <h:outputLabel value="Password"/><h:inputText value="#{userHandler.user.password}"/>
-            <br/><br/>
-            <h:outputLabel value="Email"/><h:inputText value="#{userHandler.user.email}"/>
-             <br/><br/>
-             <br/><br/>
-             
-            <h:commandButton action="#{userHandler.postUser}" value="Opprett ny bruker"/>
+        <h:form>             
+
+            <div class="container">
+                <h2>Create new user</h2>
+                <h:form>
+                    <div class="userinfo"><h:outputLabel value="Username"/><h:inputText value="#{userHandler.user.username}"/></div>
+                    <div class="userinfo"><h:outputLabel value="Email"/><h:inputText value="#{userHandler.user.email}"/></div>
+                    <div class="userinfo"><h:outputLabel value="Password"/><h:inputText value="#{userHandler.user.password}"/></div>
+                    <div class="userinfo"><label for="repeatPassword">Repeat password</label><input type="password" name="repeatPassword" required="true" id="repeatPassword" /></div>
+
+                    <div class="btns_Form">
+                        <h:commandButton styleClass="btnForm" id="btnCancel" value="Cancel" action="#{loginHandler.doLogout()}"/>
+                        <h:commandButton styleClass="btnActive btnForm"  value="Create user" action="#{userHandler.postUser}"/>
+                    </div>
+
+                </h:form>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
             
             <p>Alle medlemmene i databasen</p>
 

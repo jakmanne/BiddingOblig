@@ -142,7 +142,7 @@ body {
 
 .container {
   display           : flex;
-  width             : 35%;
+  width             : 45%;
   margin            : auto;
   margin-top: 25px;
   margin-bottom: 25px;
@@ -163,13 +163,6 @@ body {
     color: skyblue;
 }
 
-.container h2 {
-    font-size: 1.2em;
-    margin-bottom: -10px;
-}
-.container h3 {
-    font-size: 0.9em;
-}
 
 .errorMessage{
     font-size: 0.8em;
@@ -185,7 +178,7 @@ body {
 
 .userinfo input {
     width: 50%;
-    height: 20px;
+    height: 25px;
 }
 .userinfo label {
     width: 30%;
