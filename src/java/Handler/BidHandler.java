@@ -12,6 +12,7 @@ import Entities.BidInstance;
 import Entities.ProductInstance;
 import Entities.UserInstance;
 import java.io.Serializable;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -37,6 +38,7 @@ public class BidHandler implements Serializable{
     private double userRating; 
     private int currentBid; 
     private UserInstance user; 
+    private Long endTime; 
     
    
 
@@ -71,8 +73,17 @@ public class BidHandler implements Serializable{
 
         product = productDatabase.findProductById(id);
         userRating = calculations.calculateRating(product.getSeller().getRating()); 
+        endTime = product.getTimestamp().getTime();
 
 
+    }
+
+    public Long getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Long endTime) {
+        this.endTime = endTime;
     }
     
     public void placeBid(){

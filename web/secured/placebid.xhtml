@@ -19,7 +19,7 @@ and open the template in the editor.
  
          <script>
             document.addEventListener('DOMContentLoaded', () => {
-                let endTime = new Date().getTime() + 1000*10*60;
+                let endTime ="#{bidHandler.endTime}";
                 let timeelmt = document.querySelector('#remainingtime');
                 let highest = 1000;
                 let writebid = document.querySelector('#writebid');

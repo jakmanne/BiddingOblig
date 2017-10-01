@@ -56,8 +56,9 @@ public class ProductFacade extends AbstractFacade<ProductInstance> {
     
     public List<ProductInstance> findAllProducts(){
         
+      Date currentDate = new Date();
       TypedQuery<ProductInstance> query =
-      em.createQuery("SELECT c FROM ProductInstance c WHERE c.isactive = true AND c.ispurchased = false ORDER BY c.databaseTimestamp", ProductInstance.class);
+      em.createQuery("SELECT c FROM ProductInstance c WHERE c.isactive = true AND c.ispurchased = false AND c.timestamp > :date ORDER BY c.databaseTimestamp",ProductInstance.class).setParameter("date",currentDate);
       List<ProductInstance> results = query.getResultList();
       return results; 
         
@@ -86,7 +87,8 @@ public class ProductFacade extends AbstractFacade<ProductInstance> {
           results.get(i).setIspurchased(true);
           results.get(i).setIsactive(false); 
           user = results.get(i).getCurrentBid().getUser();
-      
+     
+          //legg til bruker som har kjøpt produktet. 
           em.persist(results.get(i));
           em.flush();
           
