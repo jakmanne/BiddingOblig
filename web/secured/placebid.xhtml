@@ -12,6 +12,10 @@ and open the template in the editor.
         <title>Placebid</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="../Resources/css/Toolbar.css" rel="stylesheet" type="text/css"/>
+        
+         <f:metadata>
+             <f:viewAction action="#{bidHandler.findProductById}" />
+        </f:metadata>
  
          <script>
             document.addEventListener('DOMContentLoaded', () => {
@@ -77,20 +81,27 @@ and open the template in the editor.
             
         </div>
         <!-- END NAV BAR -->
-        <div class="overskrift">Samsung S6 Edge</div>
+        <div class="overskrift">#{bidHandler.product.productName}</div>
         <div id="placebidtext">
+               <h:form>
             <img src="../Resources/img/s6edge.jpg"/>
-            <p><strong>Features</strong></p>
-            <p><span>denne er kul altså jeg lover</span></p>
-            <p><strong>Current bid:</strong> $<span id="highestbid">1000</span></p>
+            <p><strong>Features:</strong></p>
+            <p><span>#{bidHandler.product.features}</span></p>
+            <p><strong>Current bid:</strong> $<span id="highestbid">#{bidHandler.product.currentBid.amount}</span></p>
             <p><strong>Time Remaining:</strong> <span id="remainingtime">10:01</span></p>
-            <p><strong>Seller rating:</strong> <span>4,7</span></p>
-            <p><strong>Contact information:</strong> <span>silje@siljus.com</span></p>
-            <p><input type="text" id="writebid"/>   <button id="bidbtn">Place bid</button></p>
+            <p><strong>Seller rating:</strong> <span>#{bidHandler.userRating}</span></p>
+            <p><strong>Contact information:</strong> <span>#{bidHandler.product.seller.email}</span></p>
+            <p><h:inputText value="#{bidHandler.currentBid}"/> <h:commandButton id="button" value="Place Bid" action="#{bidHandler.placeBid}" /></p>
+                 <h:messages/>
+             </h:form>
         </div>
         
-          <h:form>
+        
+        
+           <h:form>
+       
         <h:commandButton id="button" value="Logout" action="#{loginHandler.doLogout()}" />
+
         </h:form>
     </body>
 </html>

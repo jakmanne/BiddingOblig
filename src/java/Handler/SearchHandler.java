@@ -7,12 +7,16 @@ package Handler;
 
 import Database.ProductFacade;
 import Entities.ProductInstance;
+import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.event.AjaxBehaviorEvent;
+import javax.faces.event.ValueChangeEvent;
 
 /**
  *
@@ -20,7 +24,7 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class SearchHandler {
+public class SearchHandler implements Serializable {
 
     
     @EJB
@@ -28,32 +32,36 @@ public class SearchHandler {
     
     private List<ProductInstance> allProducts; 
     private List<ProductInstance> temp; 
-    
+    private ProductInstance person; 
+    private String category = "undefined";
+    private String name ="Search by name";
+
+ 
     
     public SearchHandler() {
+             
+    }
+    
+    public void searchProductActive(){
         
-     
+       
+    }
+    
+    public void searchByName(){
+        allProducts = productCreator.findProductsByName(name);
+    }
+    
+  
+    public void searchDropdown(){
+    allProducts =  productCreator.findProductsByCategory(category); 
+    
     }
     
     public void allproducts(){
-        
         allProducts = productCreator.findAllProducts(); 
-            for(int i = 0; i<allProducts.size(); i++){
-            System.out.println(allProducts.get(i).getProductName());
-        }
-    }
-    
-    public void searchCategory(){
         
-        temp =  productCreator.findProductsByCategory("Interior"); 
-        
-        if(temp!=null){
-            for(int i = 0; i<temp.size(); i++){
-                System.out.println(temp.get(i).getProductName()); 
-            }
-        }
     }
-    
+       
     
       public List<ProductInstance> getAllProducts() {
         return allProducts;
@@ -62,5 +70,23 @@ public class SearchHandler {
     public void setAllProducts(List<ProductInstance> allProducts) {
         this.allProducts = allProducts;
     }
+    
+       public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+    
+      public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    
     
 }

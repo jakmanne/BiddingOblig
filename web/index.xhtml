@@ -3,78 +3,76 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-        <title>Møgs</title>
+        <title>Bidding Auction</title>
         <link href="./Resources/css/Toolbar.css" rel="stylesheet" type="text/css"/>
-        
+
         <link href="./Resources/css/styles.css" rel="stylesheet" type="text/css"/>
-        
- <f:metadata>
+
+        <f:metadata>
             <f:viewAction action="#{searchHandler.allproducts()}" />
-</f:metadata>
+        </f:metadata>
     </h:head>
     <h:body>
 
-    <!-- Har lagt inn samme kode fire gongar for å få litt "dummydata", men vil 
-           på sikt erstatte med ei løkke som tar inn items frå db. -->
-        
-    <f:view>
-      
-        <!-- NAVIGATION BAR -->
-        <div id="nav">
-            <div id="nav_wrapper">
-                
+        <!-- Har lagt inn samme kode fire gongar for å få litt "dummydata", men vil 
+               på sikt erstatte med ei løkke som tar inn items frå db. -->
+
+        <f:view>
+
+            <!-- NAVIGATION BAR -->
+            <div id="nav">
+                <div id="nav_wrapper">
+
                     <div id="dropdown"><a href="#"></a>
                         <ul>
-                        
+
                             <li><h:link value="Home" outcome="secured/userpage">
                                     <f:param name="validateuser" value="true"/>
                                 </h:link></li>
                             <li><a href="#">My Account</a></li>
                             <li><a href="#">Create user</a></li>
-                        
+
                         </ul>
-                    
-                    
+
+
                     </div>
                     <div id="logo"><img src="./Resources/logo.png"/>
                     </div>
                     <div id="namenav"><a href="#">Hey Michelle</a>
                     </div>
-                
-            </div> 
-            
-        </div>
-        <!-- END NAV BAR -->
-        
-        <!-- Usikker på om vi treng form-taggen? -->
-        <h:form>  
-            
-            <!-- Div som inneheld søkebar på toppen av sida. -->
-            <div class="searchbar">
-                
-                <input class="input" type="text" placeholder="Type your search here.."/>
-                
-                
-                <!--Kan her enten legge til kategoriar manuelt, eller hente frå db om vi vil seinare-->
-                <select class="category">
-                    <option value="unspecified">---</option>
-                    <option value="fashion">Fashion</option>
-                    <option value="electronics">Electronics</option>
-                    <option value="art">Art</option>
-                    <option value="sports">Sporting Goods</option>
-                    <option value="interior">Interior</option>
-                    <option value="motor">Motor</option>
-                </select>
 
-                <h:button class="btnForm" value="Search" outcome="secured/placebid">
-                    <!--Skal linke til ei anna side på sikt, la berre inn ein link no-->
-                    <f:param name="newbid" value="true"/>
-                </h:button>
+                </div> 
+
             </div>
-            
-            
+            <!-- END NAV BAR -->
+
+            <!-- Usikker på om vi treng form-taggen? -->
+            <h:form>  
+
+                <!-- Div som inneheld søkebar på toppen av sida. -->
+                <div class="searchbar">
+
+                    <h:inputText class ="input" value="#{searchHandler.name}" a:placeholder="Search by name of product"/>
+
+                    <h:commandButton id="button2324" value="Search Name" action="#{searchHandler.searchByName}" />
+
+                    <h:selectOneMenu class ="category" value ="#{searchHandler.category}" onchange="submit()">
+                        <f:selectItem itemValue="Fashion" itemLabel="Fashion" />
+                        <f:selectItem itemValue="Electronics" itemLabel="Electronics" />
+                        <f:selectItem itemValue="Art" itemLabel="Art" />
+                        <f:selectItem itemValue="Sports" itemLabel="Sports" />
+                        <f:selectItem itemValue="Interior" itemLabel="Interior" />
+                        <f:selectItem itemValue="Motor" itemLabel="Motor" />
+                    </h:selectOneMenu>
+
+                    <h:commandButton id="button" value="Search Category" action="#{searchHandler.searchDropdown()}" />
+
+                </div>
+
+       
 <!-- Div som vil innehalde samling av alle produkt. -->
 <div id="itemsDiv">
     
@@ -95,7 +93,7 @@
             <div class="bid">#{products.timestamp.toString()}</div>
         </div>
     </div>     
-    <f:param name="newbid" value="true"/>
+        <f:param name="newbid" value="#{products.id}"/>
     </h:link>
  <br />
 </ui:repeat>

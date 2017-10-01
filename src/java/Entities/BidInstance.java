@@ -6,6 +6,7 @@
 package Entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class BidInstance implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long bidId;
 
-    @OneToOne(mappedBy="currentBid")
+    @OneToOne(mappedBy="currentBid", cascade = CascadeType.ALL)
     private ProductInstance product; 
     
     @ManyToOne

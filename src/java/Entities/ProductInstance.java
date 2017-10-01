@@ -38,13 +38,17 @@ public class ProductInstance implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
     
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date databaseTimestamp; 
+    
     @OneToOne
     @JoinColumn(name = "bid_fk")
     private BidInstance currentBid;
     
     @ManyToOne
-    @JoinColumn(name = "user_pk")
+    @JoinColumn(name = "user_seller_pk")
     private UserInstance seller;
+    
     
     private boolean isactive; 
     private boolean ispurchased; 
@@ -73,6 +77,7 @@ public class ProductInstance implements Serializable {
     public void setSeller(UserInstance seller) {
         this.seller = seller;
     }
+    
 
     public BidInstance getCurrentBid() {
         return currentBid;
@@ -140,6 +145,14 @@ public class ProductInstance implements Serializable {
 
     public void setId(Long id) {
         this.productId = id;
+    }
+    
+    public Date getDatabaseTimestamp() {
+        return databaseTimestamp;
+    }
+
+    public void setDatabaseTimestamp(Date databaseTimestamp) {
+        this.databaseTimestamp = databaseTimestamp;
     }
 
     @Override

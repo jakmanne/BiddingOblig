@@ -7,6 +7,8 @@ package Entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,11 +35,12 @@ public class UserInstance implements Serializable {
     private String Password; 
     private int[] rating; 
     
-    @OneToMany(mappedBy="user")
-    ArrayList<BidInstance> bids;
+    @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
+    List<BidInstance> bids;
     
-    @OneToMany(mappedBy="seller")
-    ArrayList<ProductInstance> products; 
+    @OneToMany(mappedBy="seller", cascade = CascadeType.ALL)
+    List<ProductInstance> products; 
+    
 
     public String getPhone() {
         return phone;
@@ -62,7 +65,7 @@ public class UserInstance implements Serializable {
         this.rating = rating;
     }
 
-    public ArrayList<BidInstance> getBids() {
+    public List<BidInstance> getBids() {
         return bids;
     }
 
@@ -70,7 +73,7 @@ public class UserInstance implements Serializable {
         this.bids = bids;
     }
 
-    public ArrayList<ProductInstance> getProducts() {
+    public List<ProductInstance> getProducts() {
         return products;
     }
 

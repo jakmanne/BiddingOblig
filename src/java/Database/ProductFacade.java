@@ -7,6 +7,7 @@ package Database;
 
 import Entities.ProductInstance;
 import Entities.UserInstance;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -32,21 +33,66 @@ public class ProductFacade extends AbstractFacade<ProductInstance> {
         super(ProductInstance.class);
     }
     
-    public List<ProductInstance> findProductsByCategory(String name) {
+    public List<ProductInstance> findProductsByCategory(String category) {
    
       TypedQuery<ProductInstance> query =
-      em.createQuery("SELECT c FROM ProductInstance c", ProductInstance.class);
+      em.createQuery("SELECT c FROM ProductInstance AS c WHERE c.category = :category AND c.isactive = true AND c.ispurchased = false ORDER BY c.databaseTimestamp", ProductInstance.class).setParameter("category", category);
       List<ProductInstance> results = query.getResultList();
       return results; 
+      
+
     }
+ 
+   
+     public List<ProductInstance> findProductsByName(String name) {
+   
+      TypedQuery<ProductInstance> query =
+      em.createQuery("SELECT c FROM ProductInstance AS c WHERE c.productName = :name AND c.isactive = true AND c.ispurchased = false ORDER BY c.databaseTimestamp", ProductInstance.class).setParameter("name", name);
+      List<ProductInstance> results = query.getResultList();
+      return results; 
+      
+    }
+    
     
     public List<ProductInstance> findAllProducts(){
         
       TypedQuery<ProductInstance> query =
-      em.createQuery("SELECT c FROM ProductInstance c", ProductInstance.class);
+      em.createQuery("SELECT c FROM ProductInstance c WHERE c.isactive = true AND c.ispurchased = false ORDER BY c.databaseTimestamp", ProductInstance.class);
       List<ProductInstance> results = query.getResultList();
       return results; 
         
     }
+    
+     public ProductInstance findProductById(Long productId){
+        
+      TypedQuery<ProductInstance> query =
+      em.createQuery("SELECT c FROM ProductInstance c WHERE c.isactive = true AND c.ispurchased = false AND c.productId = :Id", ProductInstance.class).setParameter("Id", productId);
+      ProductInstance product = query.getSingleResult();
+      return product; 
+    }
+     
+    
+    public void timeChecker(){
+        
+      Date currentDate = new Date(); 
+      UserInstance user; 
+        
+      TypedQuery<ProductInstance> query =
+      em.createQuery("SELECT c FROM ProductInstance c WHERE c.isactive = true AND c.ispurchased = false AND c.timestamp < :date", ProductInstance.class).setParameter("date", currentDate);
+      List<ProductInstance> results = query.getResultList();
+      
+      for(int i = 0; i<results.size(); i++){
+          
+          results.get(i).setIspurchased(true);
+          results.get(i).setIsactive(false); 
+          user = results.get(i).getCurrentBid().getUser();
+      
+          em.persist(results.get(i));
+          em.flush();
+          
+      }
+                   
+    }
+    
     
 }

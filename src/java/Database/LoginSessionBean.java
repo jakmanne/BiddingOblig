@@ -24,6 +24,8 @@ public class LoginSessionBean {
     private boolean loggedIn;
     private boolean validUser;
     private UserInstance userTemp; 
+    private String urlParam; 
+    private String productId; 
 
     public LoginSessionBean() {
 
@@ -41,17 +43,20 @@ public class LoginSessionBean {
         if(validUser){
             
             userTemp = validateCredentials.getUserTemp(); 
+            String[] split = url.split("=");
+            urlParam  =  split[0];
+            productId = split[1]; 
             
         }
         
-        if (validUser && url != null && url.equals("validateuser=true")) {
+        if (validUser && url != null && urlParam.equals("validateuser")) {
             loggedIn = true;
             return "secured/" + "userpage.xhtml" + "?faces-redirect=true";
 
         }
-        if (validUser && url != null && url.equals("newbid=true")) {
+        if (validUser && url != null && urlParam.equals("newbid")) {
             loggedIn = true;
-            return "secured/" + "placebid.xhtml" +"?faces-redirect=true";
+            return "secured/" + "placebid.xhtml" +"?faces-redirect=true&id=" + productId;
 
         } else {
             loggedIn = false;

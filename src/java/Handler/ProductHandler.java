@@ -63,6 +63,8 @@ public class ProductHandler implements Serializable  {
             Calendar now = Calendar.getInstance();
             now.add(Calendar.MINUTE, Integer.parseInt(dateString));
             Date newDate = now.getTime();
+            Date databaseDate = new Date(); 
+            product.setDatabaseTimestamp(databaseDate);
             product.setTimestamp(newDate);
             productCreator.create(product);       
             FacesMessage msg = new FacesMessage("Product succesfully created");
