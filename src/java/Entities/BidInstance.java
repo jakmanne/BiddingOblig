@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -21,12 +23,31 @@ public class BidInstance implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long bidId;
 
-    
+    @OneToOne(mappedBy="currentBid")
     private ProductInstance product; 
+    
+    @ManyToOne
     private UserInstance user; 
+    
+    private Integer amount; 
 
+    public void setBidId(Long bidId) {
+        this.bidId = bidId;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public Long getBidId() {
+        return bidId;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
 
     public ProductInstance getProduct() {
         return product;
@@ -45,17 +66,17 @@ public class BidInstance implements Serializable {
     }
     
     public Long getId() {
-        return id;
+        return bidId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.bidId = id;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (bidId != null ? bidId.hashCode() : 0);
         return hash;
     }
 
@@ -66,7 +87,7 @@ public class BidInstance implements Serializable {
             return false;
         }
         BidInstance other = (BidInstance) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.bidId == null && other.bidId != null) || (this.bidId != null && !this.bidId.equals(other.bidId))) {
             return false;
         }
         return true;
@@ -74,7 +95,7 @@ public class BidInstance implements Serializable {
 
     @Override
     public String toString() {
-        return "Entities.BidInstance[ id=" + id + " ]";
+        return "Entities.BidInstance[ id=" + bidId + " ]";
     }
     
 }

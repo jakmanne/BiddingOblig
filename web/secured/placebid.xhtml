@@ -11,9 +11,84 @@ and open the template in the editor.
     <head>
         <title>Placebid</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="../Resources/css/Toolbar.css" rel="stylesheet" type="text/css"/>
+ 
+         <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                let endTime = new Date().getTime() + 1000*10*60;
+                let timeelmt = document.querySelector('#remainingtime');
+                let highest = 1000;
+                let writebid = document.querySelector('#writebid');
+                let highestbid = document.querySelector('#highestbid');
+                let bidbtn = document.querySelector('#bidbtn');
+
+                let interval = setInterval(() => {
+                    let now = new Date().getTime();
+                    if (now > endTime) {
+                        timeelmt.innerHTML = 'Thy time hath ended.';
+                        bidbtn.disabled = true;
+                        clearInterval(interval);
+                    } else {
+                        let diff = endTime - now;
+                        let mins = Math.floor(diff / (1000*60));
+                        let secs = Math.floor(diff / 1000) % 60;
+                        timeelmt.innerHTML = mins + ':' + (secs >= 10 ? secs : '0'+secs);
+                    }
+                }, 250);
+
+                bidbtn.addEventListener('click', e => {
+                    let val = writebid.value;
+                    if (val > highest) {
+                        highest = val;
+                        highestbid.innerHTML = val;
+                    } else {
+                        alert('You don\'t really understand this whole bidding thing, do you?');
+                    }
+                });
+            });
+        </script>
+        
+ 
     </head>
     <body>
-        <div>Her skal brukeren plassere et bid når man har trykket på et produkt</div>
+        <!-- NAVIGATION BAR -->
+        <div id="nav">
+            <div id="nav_wrapper">
+                
+                    <div id="dropdown"><a href="#">☰</a>
+                        <ul>
+                        
+                            <li><h:link value="Home" outcome="index.xhtml">
+                                    <f:param name="validateuser" value="true"/>
+                                </h:link></li>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Create user</a></li>
+                        
+                        </ul>
+                    
+                    
+                    </div>
+                    <div id="logo"><img src="../Resources/logo.png"/>
+                    </div>
+                    <div id="namenav"><a href="#">Hey Michelle</a>
+                    </div>
+                
+            </div> 
+            
+        </div>
+        <!-- END NAV BAR -->
+        <div class="overskrift">Samsung S6 Edge</div>
+        <div id="placebidtext">
+            <img src="../Resources/img/s6edge.jpg"/>
+            <p><strong>Features</strong></p>
+            <p><span>denne er kul altså jeg lover</span></p>
+            <p><strong>Current bid:</strong> $<span id="highestbid">1000</span></p>
+            <p><strong>Time Remaining:</strong> <span id="remainingtime">10:01</span></p>
+            <p><strong>Seller rating:</strong> <span>4,7</span></p>
+            <p><strong>Contact information:</strong> <span>silje@siljus.com</span></p>
+            <p><input type="text" id="writebid"/>   <button id="bidbtn">Place bid</button></p>
+        </div>
+        
           <h:form>
         <h:commandButton id="button" value="Logout" action="#{loginHandler.doLogout()}" />
         </h:form>

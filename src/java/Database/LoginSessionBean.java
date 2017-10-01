@@ -5,6 +5,7 @@
  */
 package Database;
 
+import Entities.UserInstance;
 import Helpers.ValidateUserHelper;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
@@ -22,6 +23,7 @@ public class LoginSessionBean {
 
     private boolean loggedIn;
     private boolean validUser;
+    private UserInstance userTemp; 
 
     public LoginSessionBean() {
 
@@ -35,7 +37,13 @@ public class LoginSessionBean {
     public String tryLogin(String username, String password, String url) {
 
         validUser = validateCredentials.validation(userFacade.findAll(), username, password);
-
+        
+        if(validUser){
+            
+            userTemp = validateCredentials.getUserTemp(); 
+            
+        }
+        
         if (validUser && url != null && url.equals("validateuser=true")) {
             loggedIn = true;
             return "secured/" + "userpage.xhtml" + "?faces-redirect=true";
@@ -52,6 +60,14 @@ public class LoginSessionBean {
             FacesContext.getCurrentInstance().addMessage(null, msg);
             return "/login.xhtml?" + url;
         }
+    }
+
+    public UserInstance getUserTemp() {
+        return userTemp;
+    }
+
+    public void setUserTemp(UserInstance userTemp) {
+        this.userTemp = userTemp;
     }
 
     public boolean isLoggedIn() {

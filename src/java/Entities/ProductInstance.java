@@ -12,7 +12,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import Entities.UserInstance; 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -25,24 +29,53 @@ public class ProductInstance implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long productId;
     
-    private String productname;
+    private String productName;
     private String picture; 
     private String features; 
-    private Date timestamp; 
-    private UserInstance user;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date timestamp;
+    
+    @OneToOne
+    @JoinColumn(name = "bid_fk")
+    private BidInstance currentBid;
+    
+    @ManyToOne
+    @JoinColumn(name = "user_pk")
+    private UserInstance seller;
+    
     private boolean isactive; 
     private boolean ispurchased; 
     private String category; 
-    
 
-    public String getProductname() {
-        return productname;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setProductname(String productname) {
-        this.productname = productname;
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public UserInstance getSeller() {
+        return seller;
+    }
+
+    public void setSeller(UserInstance seller) {
+        this.seller = seller;
+    }
+
+    public BidInstance getCurrentBid() {
+        return currentBid;
     }
 
     public String getPicture() {
@@ -70,11 +103,11 @@ public class ProductInstance implements Serializable {
     }
 
     public UserInstance getUser() {
-        return user;
+        return seller;
     }
 
     public void setUser(UserInstance user) {
-        this.user = user;
+        this.seller = user;
     }
 
     public boolean isIsactive() {
@@ -102,17 +135,17 @@ public class ProductInstance implements Serializable {
     }
  
     public Long getId() {
-        return id;
+        return productId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.productId = id;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (productId != null ? productId.hashCode() : 0);
         return hash;
     }
 
@@ -123,7 +156,7 @@ public class ProductInstance implements Serializable {
             return false;
         }
         ProductInstance other = (ProductInstance) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.productId == null && other.productId != null) || (this.productId != null && !this.productId.equals(other.productId))) {
             return false;
         }
         return true;
@@ -131,7 +164,7 @@ public class ProductInstance implements Serializable {
 
     @Override
     public String toString() {
-        return "Entities.ProductHandler[ id=" + id + " ]";
+        return "Entities.ProductHandler[ id=" + productId + " ]";
     }
 
  

@@ -6,10 +6,12 @@
 package Entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -20,15 +22,63 @@ import javax.persistence.Table;
 public class UserInstance implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id; 
-    
-    
     private String Username;
-    private String Password;  
-    private String email; 
+    private String phone; 
+    private String name; 
+    private String email;    
+       
+    private String Password; 
+    private int[] rating; 
+    
+    @OneToMany(mappedBy="user")
+    ArrayList<BidInstance> bids;
+    
+    @OneToMany(mappedBy="seller")
+    ArrayList<ProductInstance> products; 
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+   
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    public int[] getRating() {
+        return rating;
+    }
+
+    public void setRating(int[] rating) {
+        this.rating = rating;
+    }
+
+    public ArrayList<BidInstance> getBids() {
+        return bids;
+    }
+
+    public void setBids(ArrayList<BidInstance> bids) {
+        this.bids = bids;
+    }
+
+    public ArrayList<ProductInstance> getProducts() {
+        return products;
+    }
+
+    public void setProducts(ArrayList<ProductInstance> products) {
+        this.products = products;
+    }
+        
+    
  
     public String getPassword() {
         return Password;
@@ -36,14 +86,6 @@ public class UserInstance implements Serializable {
 
     public void setPassword(String Password) {
         this.Password = Password;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
     
       public String getEmail() {
@@ -65,7 +107,7 @@ public class UserInstance implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (Username != null ? Username.hashCode() : 0);
         return hash;
     }
 
@@ -76,7 +118,7 @@ public class UserInstance implements Serializable {
             return false;
         }
         UserInstance other = (UserInstance) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.Username == null && other.Username != null) || (this.Username != null && !this.Username.equals(other.Username))) {
             return false;
         }
         return true;
@@ -84,7 +126,7 @@ public class UserInstance implements Serializable {
 
     @Override
     public String toString() {
-        return "Entities.User[ id=" + id + " ]";
+        return "Entities.User[ id=" + Username + " ]";
     }
     
 }

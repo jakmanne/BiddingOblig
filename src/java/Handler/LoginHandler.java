@@ -15,6 +15,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
+import Entities.UserInstance; 
 
 
 
@@ -26,7 +27,7 @@ public class LoginHandler implements Serializable{
     private String username;
     private String password;
     private boolean loggedIn = false; 
-
+    private UserInstance sessionuser; 
 
     public LoginHandler() {
         
@@ -41,6 +42,9 @@ public class LoginHandler implements Serializable{
         
        String returnUrl = executeLogin.tryLogin(username, password, url);  
        loggedIn = executeLogin.isLoggedIn(); 
+       if(loggedIn){
+           sessionuser = executeLogin.getUserTemp(); 
+       }
        return returnUrl; 
     }
     
@@ -74,5 +78,14 @@ public class LoginHandler implements Serializable{
     public void setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
     }
+    
+    public UserInstance getSessionuser() {
+        return sessionuser;
+    }
+
+    public void setSessionuser(UserInstance sessionuser) {
+        this.sessionuser = sessionuser;
+    }
+
     
 }

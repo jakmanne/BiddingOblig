@@ -43,8 +43,7 @@ and open the template in the editor.
             
         </div>
         <!-- END NAV BAR -->
-        
-        
+           
         <h1 class="overskrift">Login</h1>
         <h3>You have to be logged in to view this page</h3>
         <h:form>
@@ -54,7 +53,7 @@ and open the template in the editor.
             <br/><br/>
             <h:commandButton id="button" value="Login" action="#{loginHandler.doLogin}" />
             <h:messages/>
-                      <h:commandButton id="button1" value="Return to home" action="#{loginHandler.doLogout()}" />
+            <h:commandButton id="button1" value="Return to home" action="#{loginHandler.doLogout()}" />
         </h:form>
         <p>Are you not a member?</p>
         <h:link value="Create New User" outcome="newuser" />
