@@ -14,6 +14,7 @@ and open the template in the editor.
         <title>Sign In</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="./Resources/css/Toolbar.css" rel="stylesheet" type="text/css"/>
+        <link href="./Resources/css/styles.css" rel="stylesheet" type="text/css"/>
         
     </head>
     <body>
@@ -43,20 +44,28 @@ and open the template in the editor.
             
         </div>
         <!-- END NAV BAR -->
-           
-        <h1 class="overskrift">Login</h1>
-        <h3>You have to be logged in to view this page</h3>
+        
+        <div class="container">
+        <h2>User Login</h2>
+        <h4>You have to be logged in to view this page</h4>
         <h:form>
-            <h:outputLabel value="Username"/><h:inputText value="#{loginHandler.username}"/>
-            <br/><br/>
-            <h:outputLabel value="Password"/><h:inputText value="#{loginHandler.password}"/>
-            <br/><br/>
-            <h:commandButton id="button" value="Login" action="#{loginHandler.doLogin}" />
-            <h:messages/>
-            <h:commandButton id="button1" value="Return to home" action="#{loginHandler.doLogout()}" />
+            <div class="userinfo">
+                <h:outputLabel value="Username"/><h:inputText value="#{loginHandler.username}"/></div>
+                
+            <div class="userinfo">
+                <h:outputLabel value="Password"/><h:inputText value="#{loginHandler.password}"/></div>
+         
+                <div class="btns_Form">
+                    <h:messages styleClass="errorMessage"/>   
+                    <h:commandButton styleClass="btnForm" id="btnCancel" value="Cancel" action="#{loginHandler.doLogout()}"/>
+                    <h:commandButton styleClass="btnActive btnForm" id="btnSignIn" value="Sign In" action="#{loginHandler.doLogin()}"/>
+                </div>
+                
+            <h:link outcome="newuser">Create new user</h:link>
+
         </h:form>
-        <p>Are you not a member?</p>
-        <h:link value="Create New User" outcome="newuser" />
-        <br/><br/>
+
+    </div>
+        
     </body>
 </html>

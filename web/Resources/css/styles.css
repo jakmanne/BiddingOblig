@@ -163,6 +163,20 @@ body {
     color: skyblue;
 }
 
+.container h2 {
+    font-size: 1.2em;
+    margin-bottom: -10px;
+}
+.container h3 {
+    font-size: 0.9em;
+}
+
+.errorMessage{
+    font-size: 0.8em;
+    color: red;
+    background-color: transparent;
+}
+
 .userinfo {
     display: flex;
     align-content: center;  
