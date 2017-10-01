@@ -33,6 +33,7 @@ public class BidHandler implements Serializable{
   
     
     private ProductInstance product; 
+    private  BidInstance newBid; 
     private double userRating; 
     private int currentBid; 
     private UserInstance user; 
@@ -45,6 +46,7 @@ public class BidHandler implements Serializable{
     public BidHandler() {
         
         product = new ProductInstance(); 
+        newBid = new BidInstance(); 
         
     }
     @EJB
@@ -75,7 +77,7 @@ public class BidHandler implements Serializable{
     
     public void placeBid(){
         
-        BidInstance newBid = new BidInstance(); 
+       
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest)context.getExternalContext().getRequest();
         HttpSession httpSession = request.getSession(false);
@@ -87,8 +89,9 @@ public class BidHandler implements Serializable{
             newBid.setProduct(product);
             newBid.setAmount(currentBid);
             newBid.setUser(user);
-           // bidDatabase.create(newBid);
-                        
+            product.setCurrentBid(newBid);  
+            productDatabase.edit(product);
+            
             FacesMessage msg = new FacesMessage("Bid succesfully placed");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             FacesContext.getCurrentInstance().addMessage(null, msg);

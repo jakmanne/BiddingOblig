@@ -147,6 +147,10 @@ public class ProductInstance implements Serializable {
         this.productId = id;
     }
     
+    public void setCurrentBid(BidInstance currentBid) {
+        this.currentBid = currentBid;
+    }
+    
     public Date getDatabaseTimestamp() {
         return databaseTimestamp;
     }
