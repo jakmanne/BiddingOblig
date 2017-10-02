@@ -25,8 +25,8 @@ and open the template in the editor.
                     <div id="dropdown"><a href="#">☰</a>
                         <ul>
                         
-                            <li><h:link value="Home" outcome="secured/userpage">
-                                    <f:param name="validateuser" value="true"/>
+                            <li><h:link value="Home" outcome="/index">
+                                    
                                 </h:link></li>
                             <li><a href="#">My Account</a></li>
                             <li><a href="#">Create user</a></li>
@@ -59,8 +59,9 @@ and open the template in the editor.
 
 
         </div>
+                <p id="smallheaders"><strong><span>Purchased products </span></strong></p>
+
         <h:form>
-        <p id="smallheaders"><strong><span>Purchased products </span></strong></p>
         <ui:repeat value="#{searchHandler.allProducts}" var="products">
 
             <div id="purchasedproduct">
@@ -73,8 +74,6 @@ and open the template in the editor.
                     <p>Bid: $<span>#{products.currentBid.amount}</span></p>
                     <p>Features: <span>#{products.features}</span></p>
                     <p>Seller: <span>#{products.seller.username}</span></p>
-
-                    <br/>
                     <p>Rate seller:
                         <h:selectOneMenu id="mindropdown" class ="category" value ="#{searchHandler.userRating}">
                         <f:selectItem itemValue="1" itemLabel="1 Stars" />
@@ -92,7 +91,6 @@ and open the template in the editor.
             </div>
         </ui:repeat>
         </h:form>
-        <div>Her kommer det brukerinformasjon og produkter som jeg har kjøpt hvor jeg kan rate de</div>
         <p>Registrer et nytt produkt</p>
         <h:link value="Create New Product" outcome="/secured/newproduct?faces-redirect=true">
         </h:link>
