@@ -5,10 +5,14 @@
  */
 package Database;
 
+import Entities.ProductInstance;
 import Entities.UserInstance;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -28,5 +32,11 @@ public class UserFacade extends AbstractFacade<UserInstance> {
     public UserFacade() {
         super(UserInstance.class);
     }
+    
+    
+    
+ 
+    
+
     
 }

@@ -41,7 +41,17 @@ public class UserInstance implements Serializable {
     @OneToMany(mappedBy="seller", cascade = CascadeType.ALL)
     List<ProductInstance> products; 
     
+    @OneToMany(mappedBy="buyer", cascade = CascadeType.ALL)
+    List<ProductInstance> boughtproducts; 
 
+    public List<ProductInstance> getBoughtproducts() {
+        return boughtproducts;
+    }
+
+    public void setBoughtproducts(List<ProductInstance> boughtproducts) {
+        this.boughtproducts = boughtproducts;
+    }
+    
     public String getPhone() {
         return phone;
     }

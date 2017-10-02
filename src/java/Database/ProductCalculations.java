@@ -6,6 +6,9 @@
 package Database;
 
 import Entities.ProductInstance;
+import Entities.UserInstance;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -16,27 +19,24 @@ import javax.ejb.Stateless;
 public class ProductCalculations {
     
     
+    
     public ProductCalculations(){
         
         
     }
     
-    
-    public double calculateRating(int[] ratings){
+    public double calculateNewRating(int[] ratings){
         
-        double rating = 0; 
-        
-        if(ratings != null){
-            
-            for(int i =0; i<ratings.length; i++){
-                
-                rating = rating + ratings[i];
-            }
-            
-            rating = rating/ratings.length; 
-            
-        }
-        return rating; 
+         double total = 0; 
+         int count = 0;         
+         
+         for(int i =1; i<ratings.length; i++){
+             total = total + ratings[i]*i; 
+             count = count + ratings[i]; 
+         }
+         
+         total = (double) total/count;
+         return total; 
     }
     
     public boolean calculateBid(ProductInstance product, int newBid){
@@ -56,4 +56,7 @@ public class ProductCalculations {
         
     }
     
-}
+
+    }
+    
+

@@ -71,29 +71,48 @@ public class ProductFacade extends AbstractFacade<ProductInstance> {
       ProductInstance product = query.getSingleResult();
       return product; 
     }
+   
+    public List<ProductInstance> findboughtproducts(UserInstance username) {
+
+        TypedQuery<ProductInstance> query =
+        em.createQuery("SELECT c FROM ProductInstance c WHERE c.isactive = false AND c.ispurchased = true AND c.buyer = :name", ProductInstance.class).setParameter("name", username);
+        List<ProductInstance> results = query.getResultList();
+        System.out.println(results.size());
+        return results;
+
+    }
      
+ 
     
-    public void timeChecker(){
+      public void timeChecker(){
         
       Date currentDate = new Date(); 
       UserInstance user; 
-        
+       
       TypedQuery<ProductInstance> query =
       em.createQuery("SELECT c FROM ProductInstance c WHERE c.isactive = true AND c.ispurchased = false AND c.timestamp < :date", ProductInstance.class).setParameter("date", currentDate);
       List<ProductInstance> results = query.getResultList();
-      
+                     
       for(int i = 0; i<results.size(); i++){
+                 
+          if(results.get(i).getCurrentBid()!=null){
+              
+                 results.get(i).setIspurchased(true);
+                 results.get(i).setIsactive(false); 
+                 user = results.get(i).getCurrentBid().getUser();
+                 List <ProductInstance> temp = user.getBoughtproducts(); 
+                 temp.add(results.get(i));
+                 results.get(i).setBuyer(user);
+                 getEntityManager().merge(user);
           
-          results.get(i).setIspurchased(true);
-          results.get(i).setIsactive(false); 
-          user = results.get(i).getCurrentBid().getUser();
-     
-          //legg til bruker som har kjøpt produktet. 
-          em.persist(results.get(i));
-          em.flush();
+          }else{
+                 results.get(i).setIspurchased(false);
+                 results.get(i).setIsactive(false); 
+                 getEntityManager().merge(results.get(i));
+
+          }   
           
       }
-                   
     }
     
     

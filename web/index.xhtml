@@ -29,15 +29,10 @@
                     <div id="dropdown"><a href="#"></a>
                         <ul>
 
-                            <li><h:link value="Home" outcome="secured/userpage">
+                            <li><h:link value="User Page" outcome="secured/userpage">
                                     <f:param name="validateuser" value="true"/>
                                 </h:link></li>
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Create user</a></li>
-
                         </ul>
-
-
                     </div>
                     <div id="logo"><img src="./Resources/logo.png"/>
                     </div>
@@ -69,34 +64,34 @@
                     </h:selectOneMenu>
 
                     <h:commandButton id="button" value="Search Category" action="#{searchHandler.searchDropdown()}" />
+                    
 
                 </div>
 
        
 <!-- Div som vil innehalde samling av alle produkt. -->
 <div id="itemsDiv">
-    
+
     <ui:repeat value="#{searchHandler.allProducts}" var="products">
-    <h:link outcome="secured/placebid">
-    <div class="item hover">
-        <div class="venstre_boks">
-            <div class="bilde">
-                <img src="./Resources/img/whitebox.jpg" alt="Item"/>
-            </div>             
-            <div class="info">
-                <div class="title">#{products.productName}</div>
-                <div class="description">#{products.features}</div>
-            </div>
-        </div>
-        <div class="hogre_boks">
-            <div class="bid">Highest bid: 0$</div>
-            <div class="bid">#{products.timestamp.toString()}</div>
-        </div>
-    </div>     
-        <f:param name="newbid" value="#{products.id}"/>
-    </h:link>
- <br />
-</ui:repeat>
+        <h:link outcome="secured/placebid">
+            <div class="item hover">
+                <div class="venstre_boks">
+                    <div class="bilde">
+                        <img src="./Resources/img/whitebox.jpg" alt="Item"/>
+                    </div>             
+                    <div class="info">
+                        <div class="title">#{products.productName}</div>
+                        <div class="description">#{products.features}</div>
+                    </div>
+                </div>
+                <div class="hogre_boks">
+                    <div class="bid">Highest bid:   #{products.currentBid.amount}$</div>
+                </div>
+            </div>     
+            <f:param name="newbid" value="#{products.id}"/>
+        </h:link>
+        <br />
+    </ui:repeat>
     
   
 </div>           

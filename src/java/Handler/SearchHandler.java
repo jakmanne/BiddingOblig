@@ -5,18 +5,26 @@
  */
 package Handler;
 
+import Database.ProductCalculations;
 import Database.ProductFacade;
+import Database.UserFacade;
 import Entities.ProductInstance;
+import Entities.UserInstance;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.ValueChangeEvent;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,11 +38,26 @@ public class SearchHandler implements Serializable {
     @EJB
     ProductFacade productCreator; 
     
+    @EJB
+    UserFacade userDatabase;
+    
+    @EJB
+    ProductCalculations calc;
+
+    
+    
     private List<ProductInstance> allProducts; 
     private List<ProductInstance> temp; 
     private ProductInstance person; 
+    private UserInstance searchForPerson;
+    private UserInstance user; 
     private String category = "undefined";
     private String name ="Search by name";
+    private double myuserRating;
+    private int userRating; 
+    private int[] ratingCollection;
+
+    
 
  
     
@@ -47,19 +70,54 @@ public class SearchHandler implements Serializable {
        
     }
     
-    public void searchByName(){
+    public void searchBaughtProducts() {
+        
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        HttpSession httpSession = request.getSession(false);
+        LoginHandler sessionobject = (LoginHandler) httpSession.getAttribute("loginHandler");
+        user = sessionobject.getSessionuser();
+        allProducts = productCreator.findboughtproducts(user);
+        
+        UserInstance usertemp = this.userDatabase.find(user.getUsername());   
+        myuserRating =  calc.calculateNewRating(usertemp.getRating());
+
+    }
+     
+    public void postRating(){
+        
+        ratingCollection = searchForPerson.getRating();  
+        ratingCollection[userRating] += 1;
+        this.userDatabase.edit(searchForPerson);                  
+    }
+        
+       
+    public double getMyuserRating() {
+        return myuserRating;
+    }
+
+    public void setMyuserRating(double myuserRating) {
+        this.myuserRating = myuserRating;
+    }
+     
+    public void searchByName() {
+
+        productCreator.timeChecker();
         allProducts = productCreator.findProductsByName(name);
     }
-    
-  
-    public void searchDropdown(){
-    allProducts =  productCreator.findProductsByCategory(category); 
-    
+
+    public void searchDropdown() {
+
+        productCreator.timeChecker();
+        allProducts = productCreator.findProductsByCategory(category);
+
     }
-    
-    public void allproducts(){
-        allProducts = productCreator.findAllProducts(); 
-        
+
+    public void allproducts() {
+
+        productCreator.timeChecker();
+        allProducts = productCreator.findAllProducts();
+
     }
        
     
@@ -70,6 +128,15 @@ public class SearchHandler implements Serializable {
     public void setAllProducts(List<ProductInstance> allProducts) {
         this.allProducts = allProducts;
     }
+    
+     public int getUserRating() {
+        return userRating;
+    }
+
+    public void setUserRating(int userRating) {
+        this.userRating = userRating;
+    }
+
     
        public String getCategory() {
         return category;
@@ -85,6 +152,23 @@ public class SearchHandler implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    
+    public UserInstance getSearchForPerson() {
+        return searchForPerson;
+    }
+
+    public void setSearchForPerson(UserInstance searchForPerson) {
+        this.searchForPerson = searchForPerson;
+    }
+    
+    public UserInstance getUser() {
+        return user;
+    }
+
+    public void setUser(UserInstance user) {
+        this.user = user;
     }
 
     

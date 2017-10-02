@@ -40,10 +40,7 @@ public class BidHandler implements Serializable{
     private UserInstance user; 
     private Long endTime; 
     
-   
 
-
-    
     
     public BidHandler() {
         
@@ -72,7 +69,7 @@ public class BidHandler implements Serializable{
         Long id = Long.parseLong(productId);
 
         product = productDatabase.findProductById(id);
-        userRating = calculations.calculateRating(product.getSeller().getRating()); 
+        userRating = calculations.calculateNewRating(product.getSeller().getRating()); 
         endTime = product.getTimestamp().getTime();
 
 

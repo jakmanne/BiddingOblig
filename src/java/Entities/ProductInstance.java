@@ -49,6 +49,12 @@ public class ProductInstance implements Serializable {
     @JoinColumn(name = "user_seller_pk")
     private UserInstance seller;
     
+    @ManyToOne
+    @JoinColumn(name = "user_buyer_pk")
+    private UserInstance buyer;
+
+    
+    
     
     private boolean isactive; 
     private boolean ispurchased; 
@@ -89,6 +95,14 @@ public class ProductInstance implements Serializable {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+    
+      public UserInstance getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(UserInstance buyer) {
+        this.buyer = buyer;
     }
 
     public String getFeatures() {
