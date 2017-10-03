@@ -21,6 +21,7 @@ import javax.persistence.TemporalType;
 /**
  *
  * @author Jakob
+ * Entity class for productInstance.
  */
 @Entity
 @RequestScoped

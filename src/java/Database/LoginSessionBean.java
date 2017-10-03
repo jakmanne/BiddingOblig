@@ -34,8 +34,10 @@ public class LoginSessionBean {
     @EJB
     private UserFacade userFacade;
 
+    //Helper class for validation. 
     ValidateUserHelper validateCredentials = new ValidateUserHelper();
 
+    //Method that tries to login the user. Checks on the url parameter where the user wants to go and sends redirect. 
     public String tryLogin(String username, String password, String url) {
 
         validUser = validateCredentials.validation(userFacade.findAll(), username, password);
@@ -53,6 +55,11 @@ public class LoginSessionBean {
             loggedIn = true;
             return "secured/" + "userpage.xhtml" + "?faces-redirect=true";
 
+        }
+        
+        if(validUser && url != null && urlParam.equals("newproduct")){
+             loggedIn = true;
+            return "secured/" + "newproduct.xhtml" + "?faces-redirect=true";
         }
         if (validUser && url != null && urlParam.equals("newbid")) {
             loggedIn = true;

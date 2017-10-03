@@ -57,7 +57,8 @@ public class BidHandler implements Serializable{
     @EJB
     ProductCalculations calculations; 
     
-    
+    //Method for the user to find a product by ID. This method is loaded every time the placebid.xhtml site is loaded. 
+    //It gets the URL parameter and quires the database for the ID and calculates the time and displays it. It also gets the rating for the user. 
     public void findProductById() {
 
         HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
@@ -73,7 +74,6 @@ public class BidHandler implements Serializable{
             
         String[] split = url.split("=");
         String productId = split[1];
-        System.out.println(productId);
         Long id = Long.parseLong(productId);
 
         product = productDatabase.findProductById(id);
@@ -92,6 +92,7 @@ public class BidHandler implements Serializable{
         this.endTime = endTime;
     }
     
+    //This method is invoked when the user places a bid. It checks if the bid is valid and updates the database with the new bid. 
     public void placeBid(){
         
        
@@ -112,14 +113,13 @@ public class BidHandler implements Serializable{
             FacesMessage msg = new FacesMessage("Bid succesfully placed");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             FacesContext.getCurrentInstance().addMessage(null, msg);
-           
-            
+       
         }else{
             
             FacesMessage msg = new FacesMessage("Your bid is too low");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             FacesContext.getCurrentInstance().addMessage(null, msg);
-            
+        
         }
         
     }

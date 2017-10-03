@@ -47,6 +47,8 @@ public class ProductHandler implements Serializable  {
        this.product = new ProductInstance(); 
     }
     
+   //Method for creating a new product. In the database we will have two times, one for the expiration date of the bidding, and
+   //one for the time the product was creates so that we can sort the products by time. 
    public void createProduct() throws ParseException{
        
         FacesContext context = FacesContext.getCurrentInstance();

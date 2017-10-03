@@ -25,6 +25,9 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author Jakob
+ * All webpages under the "secured" folder are redirected to the loginfilter that checks if the user is logged in or not. If the quires are HttpSerlvet requests the
+ * method extracts the urlparameter and attaches it to the url redirect to the next page. If we have not done this the URL parameter would have dissapared. 
+ * 
  */
 @WebFilter(filterName = "LoginFilter", urlPatterns = {"/*"})
 public class LoginFilter implements Filter {

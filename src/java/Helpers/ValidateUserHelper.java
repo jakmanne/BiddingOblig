@@ -19,7 +19,7 @@ public class ValidateUserHelper {
   public ValidateUserHelper(){
       
   }
-    
+    //Validating password and username. We know this is not efficient and it should have been hashed/made more secure. 
     public boolean validation(List<UserInstance> temp, String username, String password){
       
          boolean usernameCorrect = false; 

@@ -33,6 +33,15 @@ public class ProductFacade extends AbstractFacade<ProductInstance> {
         super(ProductInstance.class);
     }
     
+    /**
+     * 
+     * 
+     * Here are several methods to get information from the Database. They are similar and in the end we have a timechecker method
+     * that is run several times in order to update the information that lays in the database. We have used typedquerys. 
+     */
+    
+    
+    
     public List<ProductInstance> findProductsByCategory(String category) {
    
       TypedQuery<ProductInstance> query =

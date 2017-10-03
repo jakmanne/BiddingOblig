@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 /**
  *
  * @author Jakob
+ * Entity class for BidInstance
  */
 @Entity
 public class BidInstance implements Serializable {

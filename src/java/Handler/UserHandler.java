@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -35,6 +36,7 @@ public class UserHandler {
     private UserInstance user; 
 
     private String username; 
+    private String repeatPassword; 
 
     /**
      * Creates a new instance of UserHandler
@@ -58,12 +60,23 @@ public class UserHandler {
         return  temp;    
     } 
 
-    // Saves the message and then returns the string "theend"
-    public String postUser(){
-       int[] temp = new int[6];
-       user.setRating(temp);
-       this.userFacade.create(user);
-       return "newuser";
+    // updates the database with a new user. 
+    public String postUser() {
+
+        if (!user.getPassword().equals(repeatPassword)) {
+
+            FacesMessage msg = new FacesMessage("Password does not match");
+            msg.setSeverity(FacesMessage.SEVERITY_INFO);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+            return "newuser";
+
+        }else{
+            
+             int[] temp = new int[6];
+             user.setRating(temp);
+             this.userFacade.create(user);
+             return "index?faces-redirect=true";
+        }
     }
     
     
@@ -74,6 +87,15 @@ public class UserHandler {
     public void setUsername(String username) {
         this.username = username;
     }
+    
+    public String getRepeatPassword() {
+        return repeatPassword;
+    }
+
+    public void setRepeatPassword(String repeatPassword) {
+        this.repeatPassword = repeatPassword;
+    }
+
     
 
   

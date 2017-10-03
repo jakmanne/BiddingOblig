@@ -8,7 +8,7 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
         xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <head>
+    <h:head>
         <title>Placebid</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="../Resources/css/Toolbar.css" rel="stylesheet" type="text/css"/>
@@ -39,7 +39,7 @@ and open the template in the editor.
         </script>
         
  
-    </head>
+    </h:head>
     <body>
         <!-- NAVIGATION BAR -->
         <div id="nav">
@@ -76,7 +76,8 @@ and open the template in the editor.
             <p><strong>Time Remaining:</strong> <span id="remainingtime">10:01</span></p>
             <p><strong>Seller rating:</strong> <span><h:outputText value="#{bidHandler.userRating}" ><f:convertNumber pattern="#0.00" /></h:outputText></span></p>
             <p><strong>Contact information:</strong> <span>#{bidHandler.product.seller.email}</span></p>
-            <p><h:inputText value="#{bidHandler.currentBid}"/> <h:commandButton id="button" value="Place Bid" action="#{bidHandler.placeBid}" /></p>
+            <p><h:inputText value="#{bidHandler.currentBid}"/>
+            <h:commandButton id="button" value="Place Bid" action="#{bidHandler.placeBid}"><f:ajax execute="@form" render="@form" /></h:commandButton></p>
                  <h:messages/>
              </h:form>
         </div>

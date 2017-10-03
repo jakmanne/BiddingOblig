@@ -23,6 +23,7 @@ public class ProductCalculations {
         
     }
     
+    //Calculates the average rating for the user. 
     public double calculateNewRating(int[] ratings){
         
          double total = 0; 
@@ -37,6 +38,7 @@ public class ProductCalculations {
          return total; 
     }
     
+    //Calculates if the bid can be placed. 
     public boolean calculateBid(ProductInstance product, int newBid){
         
         if(product.getCurrentBid() == null){

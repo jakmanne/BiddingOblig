@@ -19,6 +19,7 @@ import javax.persistence.Table;
 /**
  *
  * @author Jakob
+ * Entity class for UserInstance. 
  */
 @Entity
 public class UserInstance implements Serializable {

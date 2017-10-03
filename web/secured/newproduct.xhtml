@@ -19,27 +19,24 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        
-                <!-- NAVIGATION BAR -->
+
+        <!-- NAVIGATION BAR -->
         <div id="nav">
             <div id="nav_wrapper">
-                
-                    <div id="dropdown"><a href="#">☰</a>
-                        <ul>
-                            
-                            <li> <h:link value="Home" outcome="/index?faces-redirect=true"></h:link></li>
-                            <li><h:link value="My account" outcome="/secured/userpage?faces-redirect=true"></h:link></li>
-                            <li><h:link value="Create new user" outcome="/newuser?faces-redirect=true"></h:link></li>
-                        
-                        </ul>
-                    
-                    
-                    </div>
-                    <div id="logo"><img src="./Resources/logo.png"/>
-                    </div>
-                
+
+                <div id="dropdown"><a href="#">☰</a>
+                    <ul>
+
+                        <li> <h:link value="Home" outcome="/index?faces-redirect=true"></h:link></li>
+                        <li><h:link value="My account" outcome="/secured/userpage?faces-redirect=true"></h:link></li>
+                        <li><h:link value="Create new user" outcome="/newuser?faces-redirect=true"></h:link></li>
+
+                    </ul>
+                </div>
+                <div id="logo"><img src="./Resources/logo.png"/>
+                </div>
             </div> 
-            
+
         </div>
         <!-- END NAV BAR -->
         
@@ -57,7 +54,8 @@ and open the template in the editor.
                     <h:outputLabel value="Features"/><h:inputText value="#{productHandler.product.features}"/>
                 </div>
                 
-               Category <h:selectOneMenu styleClass ="category" value="#{productHandler.product.category}">
+               <div class="userinfo">
+               <h:outputLabel value="Category"/> <h:selectOneMenu styleClass ="category" value="#{productHandler.product.category}">
                       <f:selectItem itemValue="Electronics" itemLabel="Electronics" />
                       <f:selectItem itemValue="Fashion" itemLabel="Fashion" />
                       <f:selectItem itemValue="Art" itemLabel="Art" />
@@ -66,16 +64,15 @@ and open the template in the editor.
                       <f:selectItem itemValue="Motor" itemLabel="Motor" />
                       <f:selectItem itemValue="Other" itemLabel="Other" />
               </h:selectOneMenu>
-                Write Timestamp in single minutes, eg "1" for 1 minute bidding time.
-                
+               </div>                
                 <div class="userinfo">
-                    <h:outputLabel value="Bidding Time"/><h:inputText value="#{productHandler.dateString}"/>  
+                    <h:outputLabel value="Bidding Time (Write single minutes)"/><h:inputText value="#{productHandler.dateString}"/>
                 </div>
 
               <h:messages/>
               <div class="btns_Form">
                         <h:commandButton styleClass="btnActive btnForm" id="productcreate" value="Create new product" action="#{productHandler.createProduct()}"/>
-                        <h:commandButton styleClass="btnForm"  value="Cancel" action="#{loginHandler.doLogout()}"/>
+                        <h:commandButton styleClass="btnForm"  value="Cancel" action="#{loginHandler.navigateToHome()}"/>
               </div>
             
             </div>

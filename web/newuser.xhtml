@@ -37,21 +37,24 @@ and open the template in the editor.
         <!-- END NAV BAR -->
         
         
-    <f:view>
-        <h:form>             
+        <f:view>
+            <h:form>             
 
-            <div class="container">
-                <h2>Create new user</h2>
-                <h:form>
-                    <div class="userinfo"><h:outputLabel value="Username"/><h:inputText required ="true" value="#{userHandler.user.username}"/></div>
-                    <div class="userinfo"><h:outputLabel value="Email"/><h:inputText required ="true" value="#{userHandler.user.email}"/></div>
-                    <div class="userinfo"><h:outputLabel value="Password"/><h:inputSecret required="true" value="#{userHandler.user.password}"/></div>
-                    <div class="userinfo"><h:outputLabel value="Repeat Password"/><input type="password" name="repeatPassword" required="true" id="repeatPassword" /></div>
+                <div class="container">
+                    <h2>Create new user</h2>
+                    <h:form>
+                        <div class="userinfo"><h:outputLabel value="Username"/><h:inputText required ="true" value="#{userHandler.user.username}"/></div>
+                        <div class="userinfo"><h:outputLabel value="Email"/><h:inputText required ="true" value="#{userHandler.user.email}"/></div>
+                        <div class="userinfo"><h:outputLabel value="Name"/><h:inputText required ="true" value="#{userHandler.user.name}"/></div>
+                        <div class="userinfo"><h:outputLabel value="Phone"/><h:inputText required ="true" value="#{userHandler.user.phone}"/></div>
+                        <div class="userinfo"><h:outputLabel value="Password"/><h:inputSecret required="true" value="#{userHandler.user.password}"/></div>
+                        <div class="userinfo"><h:outputLabel value="Repeat Password"/><h:inputSecret required="true" value="#{userHandler.repeatPassword}"/></div>
+                        <h:messages styleClass="errorMessage"/>
 
-                    <div class="btns_Form">
-                        <h:commandButton styleClass="btnForm" id="btnCancel" value="Cancel" action="#{loginHandler.doLogout()}"/>
-                        <h:commandButton styleClass="btnActive btnForm"  value="Create user" action="#{userHandler.postUser}"/>
-                    </div>
+                        <div class="btns_Form">
+                            <h:commandButton styleClass="btnForm" id="btnCancel" value="Cancel" action="#{loginHandler.doLogout()}"/>
+                            <h:commandButton styleClass="btnActive btnForm"  value="Create user" action="#{userHandler.postUser}"/>
+                        </div>
 
                 </h:form>
             </div>

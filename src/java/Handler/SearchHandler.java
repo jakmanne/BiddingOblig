@@ -70,10 +70,9 @@ public class SearchHandler implements Serializable {
        
     }
     
+    //Gets the list of the users baught products. 
     public void searchBaughtProducts() {
-        
-        System.out.println("hei");
-        
+                
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         HttpSession httpSession = request.getSession(false);
@@ -86,6 +85,7 @@ public class SearchHandler implements Serializable {
 
     }
      
+    //Updates the database if a user has posted a new rating. 
     public String postRating(){
         
         ratingCollection = searchForPerson.getRating();  
