@@ -25,12 +25,10 @@ and open the template in the editor.
                     <div id="dropdown"><a href="#">☰</a>
                         <ul>
                         
-                            <li><h:link value="Home" outcome="/index">
-                                    
-                                </h:link></li>
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Create user</a></li>
-                        
+                            <li> <h:link value="Home" outcome="/index?faces-redirect=true"></h:link></li>
+                            <li><h:link value="My account" outcome="/secured/userpage?faces-redirect=true"></h:link></li>
+                            <li><h:link value="Create new user" outcome="/newuser?faces-redirect=true"></h:link></li>
+                                                   
                         </ul>
                     
                     
