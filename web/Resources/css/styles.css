@@ -54,6 +54,7 @@ body {
 .info {
     padding-top: 10px;
     padding-bottom: 10px;
+    text-decoration: none;
 }
 
 
@@ -62,6 +63,7 @@ body {
     font-size: 1.2em; 
     font-weight: bold;
     margin-left: 5px;
+    text-decoration: none;
 }
 
 .description {
@@ -69,6 +71,7 @@ body {
     justify-content: flex-end;
     margin-top: 10px;
     margin-left: 5px;
+    text-decoration: none;
 }
 
 .bid {

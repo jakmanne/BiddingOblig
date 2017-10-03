@@ -50,9 +50,9 @@
                 <!-- Div som inneheld søkebar på toppen av sida. -->
                 <div class="searchbar">
 
-                    <h:inputText class ="input" value="#{searchHandler.name}" a:placeholder="Search by name of product"/>
+                    <h:inputText styleClass ="input" value="#{searchHandler.name}" a:placeholder="Search by name of product"/>
 
-                    <h:commandButton id="button2324" value="Search Name" action="#{searchHandler.searchByName}" />
+                    <h:commandButton styleClass="btnForm" id="button2324" value="Search Name" action="#{searchHandler.searchByName}" />
 
                     <h:selectOneMenu class ="category" value ="#{searchHandler.category}" onchange="submit()">
                         <f:selectItem itemValue="Fashion" itemLabel="Fashion" />
@@ -63,7 +63,7 @@
                         <f:selectItem itemValue="Motor" itemLabel="Motor" />
                     </h:selectOneMenu>
 
-                    <h:commandButton id="button" value="Search Category" action="#{searchHandler.searchDropdown()}" />
+                    <h:commandButton styleClass="btnForm" id="button" value="Search Category" action="#{searchHandler.searchDropdown()}" />
                     
 
                 </div>
