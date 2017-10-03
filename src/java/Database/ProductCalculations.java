@@ -11,12 +11,10 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-/**
- *
- * @author Jakob
- */
+
 @Stateless
 public class ProductCalculations {
+    
     
     
     

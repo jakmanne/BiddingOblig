@@ -62,7 +62,15 @@ public class BidHandler implements Serializable{
 
         HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String url = request.getQueryString();
-
+        
+        if(url == null){
+            
+            FacesMessage msg = new FacesMessage("Dont refresh the page, database cant handle request. please go to index and try again");
+            msg.setSeverity(FacesMessage.SEVERITY_INFO);
+            FacesContext.getCurrentInstance().addMessage(null, msg); 
+            
+        }else{
+            
         String[] split = url.split("=");
         String productId = split[1];
         System.out.println(productId);
@@ -71,7 +79,8 @@ public class BidHandler implements Serializable{
         product = productDatabase.findProductById(id);
         userRating = calculations.calculateNewRating(product.getSeller().getRating()); 
         endTime = product.getTimestamp().getTime();
-
+        
+        }  
 
     }
 

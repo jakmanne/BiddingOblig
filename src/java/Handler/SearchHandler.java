@@ -72,6 +72,8 @@ public class SearchHandler implements Serializable {
     
     public void searchBaughtProducts() {
         
+        System.out.println("hei");
+        
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         HttpSession httpSession = request.getSession(false);
@@ -84,11 +86,12 @@ public class SearchHandler implements Serializable {
 
     }
      
-    public void postRating(){
+    public String postRating(){
         
         ratingCollection = searchForPerson.getRating();  
         ratingCollection[userRating] += 1;
-        this.userDatabase.edit(searchForPerson);                  
+        this.userDatabase.edit(searchForPerson);    
+        return "/secured/userpage?faces-redirect=true";
     }
         
        

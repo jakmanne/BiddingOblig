@@ -20,16 +20,12 @@ and open the template in the editor.
          <script>
             document.addEventListener('DOMContentLoaded', () => {
                 let endTime ="#{bidHandler.endTime}";
-                let timeelmt = document.querySelector('#remainingtime');
-                let highest = 1000;
-                let writebid = document.querySelector('#writebid');
-                let highestbid = document.querySelector('#highestbid');
-                let bidbtn = document.querySelector('#bidbtn');
+                let timeelmt = document.querySelector('#remainingtime');               
 
                 let interval = setInterval(() => {
                     let now = new Date().getTime();
                     if (now > endTime) {
-                        timeelmt.innerHTML = 'Thy time hath ended.';
+                        timeelmt.innerHTML = 'Time has run out';
                         bidbtn.disabled = true;
                         clearInterval(interval);
                     } else {
@@ -38,17 +34,7 @@ and open the template in the editor.
                         let secs = Math.floor(diff / 1000) % 60;
                         timeelmt.innerHTML = mins + ':' + (secs >= 10 ? secs : '0'+secs);
                     }
-                }, 250);
-
-                bidbtn.addEventListener('click', e => {
-                    let val = writebid.value;
-                    if (val > highest) {
-                        highest = val;
-                        highestbid.innerHTML = val;
-                    } else {
-                        alert('You don\'t really understand this whole bidding thing, do you?');
-                    }
-                });
+                }, 250);          
             });
         </script>
         
@@ -62,11 +48,9 @@ and open the template in the editor.
                     <div id="dropdown"><a href="#">☰</a>
                         <ul>
                         
-                            <li><h:link value="Home" outcome="index.xhtml">
-                                    <f:param name="validateuser" value="true"/>
-                                </h:link></li>
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Create user</a></li>
+                            <li> <h:link value="Home" outcome="/index?faces-redirect=true"></h:link></li>
+                            <li><h:link value="My account" outcome="/secured/userpage?faces-redirect=true"></h:link></li>
+                            <li><h:link value="Create new user" outcome="/newuser?faces-redirect=true"></h:link></li>
                         
                         </ul>
                     
@@ -89,7 +73,7 @@ and open the template in the editor.
             <p><span>#{bidHandler.product.features}</span></p>
             <p><strong>Current bid:</strong> $<span id="highestbid">#{bidHandler.product.currentBid.amount}</span></p>
             <p><strong>Time Remaining:</strong> <span id="remainingtime">10:01</span></p>
-            <p><strong>Seller rating:</strong> <span>#{bidHandler.userRating}</span></p>
+            <p><strong>Seller rating:</strong> <span><h:outputText value="#{bidHandler.userRating}" ><f:convertNumber pattern="#0.00" /></h:outputText></span></p>
             <p><strong>Contact information:</strong> <span>#{bidHandler.product.seller.email}</span></p>
             <p><h:inputText value="#{bidHandler.currentBid}"/> <h:commandButton id="button" value="Place Bid" action="#{bidHandler.placeBid}" /></p>
                  <h:messages/>

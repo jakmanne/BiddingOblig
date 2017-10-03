@@ -46,7 +46,7 @@ and open the template in the editor.
         <!-- END NAV BAR -->
         
         <div id="personandstars">
-            <p id="mediumheaders"><strong><span>#{searchHandler.user.username}</span> [<span>#{searchHandler.myuserRating}</span>] </strong></p>
+            <p id="mediumheaders"><strong><span>#{searchHandler.user.username}</span> [<span><h:outputText value="#{searchHandler.myuserRating}" ><f:convertNumber pattern="#0.00" /></h:outputText></span>] </strong></p>
             <img id="sellerimg" src="../Resources/img/seller.png"/>
             <img id="starsimg" src="../Resources/img/stars.png"/>
             <div id="starratings"> 
