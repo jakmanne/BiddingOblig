@@ -93,13 +93,13 @@ body {
     
 }
 #placebidtext{
-    border: 1px solid grey;
+    border: 1px solid lightgrey;
     margin: 30px;
     padding: 20px;
 }
 #placebidtext img{
     display: block;
-    width: 400px;
+    width: 200px;
 }
 #personandstars{
     border: 1px solid lightgrey;
