@@ -102,7 +102,7 @@ body {
     width: 400px;
 }
 #personandstars{
-    border: 1px solid grey;
+    border: 1px solid lightgrey;
     padding: 20px;
     position: relative;
     height: 250px;
@@ -124,15 +124,26 @@ body {
     font-size: 13px;
     position: absolute;
     left: 35px;
+    margin: 10px;
 }
 #starsimg{
     width: 120px;
     padding: 10px;
     position: absolute;
     right: 90px;
-    
-    
 }
+#ppheader{
+    font-size: 15px;
+    margin-left: 30px;
+}
+#addproductfromuserpage{
+    border: 1px solid lightgrey;
+    margin: 30px;
+}
+#addproductfromuserpage:hover{
+    background-color: lightgrey;
+}
+
 #starratings{
     position: absolute;
     font-size: 12px;
@@ -140,14 +151,14 @@ body {
     top: 82px;
 }
 #purchasedproduct{
-    border: 1px solid grey;
+    border: 1px solid lightgrey;
     margin: 30px; 
     position: relative;
     height: 151px;
 }
 #boughtproductpic{
     position: absolute;
-    width: 150px;
+    height: 130px;
     padding: 10px;
     position: absolute;
     

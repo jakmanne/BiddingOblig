@@ -57,14 +57,18 @@ and open the template in the editor.
 
 
         </div>
-                <p id="smallheaders"><strong><span>Purchased products </span></strong></p>
-
+        <div id="addproductfromuserpage">
+                    <h:link  value="✚  Create new product" outcome="/secured/newproduct?faces-redirect=true">
+        </h:link>
+        </div>
+        <p id="ppheader"><strong> Purchased products </strong></p>
+                
         <h:form>
         <ui:repeat value="#{searchHandler.allProducts}" var="products">
 
             <div id="purchasedproduct">
 
-                <img id="boughtproductpic" src="../Resources/img/s6edge.jpg"/>
+                <img id="boughtproductpic" src="../Resources/img/whitebox.jpg"/>
                 <div id="sellerproductinfo">
 
                     <p><strong><span>#{products.productName}</span></strong></p>
