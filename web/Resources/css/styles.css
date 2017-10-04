@@ -28,19 +28,11 @@ link {
 }
 
 body {
-  margin      : 30px;
   font-family : 'Raleway',
                 sans-serif;
   line-height : 1.2;
 }
 
-#menu {
-    background-color: lightblue;
-    margin-top: -18px;
-    padding-top: 6px; 
-    padding-bottom: 6px;
-    padding-left: 20px;
-}
 
 /*---------- For index -----------------------*/
 
@@ -143,10 +135,51 @@ body {
 }
 
 .category {
-    width: 30%;
+    border: 1px solid #ccc;
+    width: 24%;
     height: 30px;
-    margin: auto;
+    border-radius: 3px;
+    overflow: hidden;
+    background: #fafafa url("img/icon-select.png") no-repeat 90% 50%;
+    margin: auto; 
 }
+
+.category select {
+    padding: 5px 8px;
+
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.category select:focus {
+    outline: none;
+}
+
+.categoryNew{
+    border: 1px solid #ccc;
+    width: 51%;
+    border-radius: 3px;
+    overflow: hidden;
+    background: #fafafa url("img/icon-select.png") no-repeat 90% 50%;
+}
+
+.categoryNew select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.categoryNew select:focus {
+    outline: none;
+}
+
 
 .btnSearch {
     width: auto;
