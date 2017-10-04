@@ -54,7 +54,13 @@ body {
 .info {
     padding-top: 10px;
     padding-bottom: 10px;
-    text-decoration: none;
+    text-decoration: none; 
+    color: black;
+}
+
+.info a {
+    text-decoration: none; 
+    color: black;
 }
 
 
@@ -71,7 +77,8 @@ body {
     justify-content: flex-end;
     margin-top: 10px;
     margin-left: 5px;
-    text-decoration: none;
+    text-decoration: none; 
+    color: black;
 }
 
 .bid {
@@ -81,7 +88,9 @@ body {
   padding-top: 15px;
   padding-right: 10px;
   font-weight: bold;
-    text-align: right;
+  text-align: right;
+  text-decoration: none; 
+  color: black;
 }
 
 .item {
@@ -95,12 +104,16 @@ body {
   -webkit-flex-wrap : wrap;
   flex-wrap         : wrap;
   justify-content   : space-between;
-    
+  text-decoration: none; 
+  color: black;
+
 }
 
 .venstre_boks {
     display: flex;
-    width: 60%
+    width: 60%;
+    text-decoration: none; 
+    color: black;
 }
 
 .hover:focus {
@@ -221,7 +234,8 @@ body {
     background-color: lightgrey;
 }
 
-hlink {
+#produktboks {
     text-decoration: none; 
     color: black;
 }
+
