@@ -33,8 +33,10 @@ and open the template in the editor.
                     
                     
                     </div>
+                    <h:link outcome="/index?faces-redirect=true">
                     <div id="logo"><img src="../Resources/logo.png"/>
                     </div>
+                    </h:link>
                     <div id="namenav"><a href="#">Hey Michelle</a>
                     </div>
                 
@@ -57,10 +59,11 @@ and open the template in the editor.
 
 
         </div>
+        <h:link id="newprodlink" outcome="/secured/newproduct?faces-redirect=true">
         <div id="addproductfromuserpage">
-                    <h:link  value="✚  Create new product" outcome="/secured/newproduct?faces-redirect=true">
-        </h:link>
+            ✚  Create new product
         </div>
+        </h:link>
         <p id="ppheader"><strong> Purchased products </strong></p>
                 
         <h:form>

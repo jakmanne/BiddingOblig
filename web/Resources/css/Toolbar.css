@@ -142,6 +142,8 @@ body {
     height: 30px;
     position: relative;
     padding: 15px;
+    text-decoration: none;
+    
 }
 #addproductfromuserpage:hover{
     background-color: lightgrey;
@@ -170,4 +172,8 @@ body {
     font-size: 12px;
     left: 210px;
     position: absolute;
+}
+#newprodlink{
+    text-decoration: none;
+    color: #222;
 }
