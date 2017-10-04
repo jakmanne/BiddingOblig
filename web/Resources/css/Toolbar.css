@@ -139,6 +139,9 @@ body {
 #addproductfromuserpage{
     border: 1px solid lightgrey;
     margin: 30px;
+    height: 30px;
+    position: relative;
+    padding: 15px;
 }
 #addproductfromuserpage:hover{
     background-color: lightgrey;
