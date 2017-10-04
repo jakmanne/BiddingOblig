@@ -71,7 +71,7 @@ and open the template in the editor.
                     <h:outputLabel value="Bidding Time (Write single minutes)"/><h:inputText value="#{productHandler.dateString}"/>
                 </div>
 
-              <h:messages/>
+              <h:messages styleClass="errorMessage"/>
               <div class="btns_Form">
                   <h:commandButton styleClass="btnForm"  value="Cancel" action="#{loginHandler.navigateToHome()}"/>
                   <h:commandButton styleClass="btnActive btnForm" id="productcreate" value="Create new product" action="#{productHandler.createProduct()}"/>      
