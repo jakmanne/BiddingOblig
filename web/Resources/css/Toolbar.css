@@ -25,6 +25,7 @@ body {
 #nav_wrapper {
     margin: 0 auto;
     position: relative;
+    z-index: 5000;
     
 }
 #nav ul {
@@ -102,7 +103,6 @@ body {
     width: 200px;
 }
 #personandstars{
-    border: 1px solid lightgrey;
     padding: 20px;
     position: relative;
     height: 250px;
