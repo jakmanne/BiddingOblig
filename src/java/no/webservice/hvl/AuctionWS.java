@@ -33,24 +33,31 @@ public class AuctionWS {
     private List<ProductInstance> products123; 
 
     @WebMethod(operationName = "getAuction")
-    public String getAuction() {
+    public ProductInstance[] getAuction() {
         
-        
+        //returns only active products that one can bid for. 
+        //unable to just return the list because we get an infinite loop while converting the objects to XML. 
+        //therefore we had to convert the list to an array.  
         products123 = productFinder123.findAllProducts(); 
-        System.out.println(products123.get(0).getProductName());
         
-        //ProductInstance[] companies = new ProductInstance[products123.size()];
+        ProductInstance[] productArray = new ProductInstance[products123.size()];
         
-       //ProductInstance haha = new ProductInstance();
-       
-        //companies = products123.toArray(companies); 
-
-     
-
-        //companies[1] = haha2;
-        return "hei";
-     
-          //return temp.toArray(new ProductInstance[temp.size()]); 
+        for(int i = 0; i<productArray.length; i++){
+            
+            ProductInstance temp = new ProductInstance(); 
+            temp.setProductName(products123.get(i).getProductName());
+            temp.setIsactive(true);
+            temp.setFeatures(products123.get(i).getFeatures());
+            temp.setSellerName(products123.get(i).getSeller().getUsername());
+            if(products123.get(i).getCurrentBid() != null){
+               temp.setHighestbid(products123.get(i).getCurrentBid().getAmount());
+            }else{
+                temp.setHighestbid(0);
+            }
+            productArray[i] = temp; 
         }
+        
+        return productArray; 
+    }
  
 }
