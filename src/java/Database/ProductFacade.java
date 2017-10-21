@@ -10,15 +10,22 @@ import Entities.UserInstance;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
  * @author Jakob
  */
 @Stateless
+@Named
+@Path("/product")
 public class ProductFacade extends AbstractFacade<ProductInstance> {
 
     @PersistenceContext(unitName = "BiddingObligPU")
@@ -39,8 +46,6 @@ public class ProductFacade extends AbstractFacade<ProductInstance> {
      * Here are several methods to get information from the Database. They are similar and in the end we have a timechecker method
      * that is run several times in order to update the information that lays in the database. We have used typedquerys. 
      */
-    
-    
     
     public List<ProductInstance> findProductsByCategory(String category) {
    
@@ -63,8 +68,10 @@ public class ProductFacade extends AbstractFacade<ProductInstance> {
     }
     
     
+    @GET
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Path("all")
     public List<ProductInstance> findAllProducts(){
-        
       Date currentDate = new Date();
       TypedQuery<ProductInstance> query =
       em.createQuery("SELECT c FROM ProductInstance c WHERE c.isactive = true AND c.ispurchased = false AND c.timestamp > :date ORDER BY c.databaseTimestamp",ProductInstance.class).setParameter("date",currentDate);
