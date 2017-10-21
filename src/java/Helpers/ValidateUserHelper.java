@@ -48,6 +48,35 @@ public class ValidateUserHelper {
         
          return usernameCorrect && passwordCorrect; 
     }
+    
+      public UserInstance validationUser(List<UserInstance> temp, String username, String password){
+      
+         boolean usernameCorrect = false; 
+         boolean passwordCorrect = false;
+        
+        if(username!= null && !username.isEmpty() && password !=null && !password.isEmpty() ){
+            
+            if(!temp.isEmpty()){
+                
+                for(UserInstance users: temp){
+                    if(users.getUsername().equals(username)){
+                        usernameCorrect = true;
+                        break; 
+                    }
+                }
+                
+                for(UserInstance users: temp){
+                    if(users.getPassword().equals(password)){
+                        passwordCorrect = true;
+                        return userTemp; 
+                       
+                    }
+                }
+            }
+        }
+        
+        return null; 
+    }
 
     public UserInstance getUserTemp() {
         return userTemp;
