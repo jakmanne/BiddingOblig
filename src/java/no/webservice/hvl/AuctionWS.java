@@ -5,8 +5,15 @@
  */
 package no.webservice.hvl;
 
+import Database.BidFacade;
+import Database.ProductCalculations;
 import Database.ProductFacade;
+import Database.UserFacade;
+import Entities.BidInstance;
 import Entities.ProductInstance;
+import Entities.UserInstance;
+import Helpers.ValidateUserHelper;
+import com.oracle.webservices.api.message.MessageContext;
 import java.util.ArrayList;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -29,6 +36,29 @@ public class AuctionWS {
 
     @EJB
     ProductFacade productFinder123;
+    
+    @EJB
+    UserFacade userFacade; 
+    
+    @EJB
+    ProductFacade productFacade; 
+    
+    @EJB
+    BidFacade bidFacade; 
+    
+    private boolean validUser;
+    private UserInstance usertemp; 
+    private ProductInstance producttemp;
+  
+    
+    
+    @EJB
+    ProductCalculations calculations; 
+    
+   
+    
+    
+    ValidateUserHelper validateCredentials = new ValidateUserHelper();
     
     private List<ProductInstance> products123; 
 
@@ -60,4 +90,41 @@ public class AuctionWS {
         return productArray; 
     }
  
+    @WebMethod(operationName = "placeBid")
+    public String placeBid(@WebParam(name = "username") String username, @WebParam(name = "password") String password, @WebParam(name = "productname") String productname, @WebParam(name = "amount") int amount) {
+
+        validUser = validateCredentials.validation(userFacade.findAll(), username, password);
+
+        BidInstance newbid = new BidInstance();
+
+        usertemp = validateCredentials.validationUser(userFacade.findAll(), username, password);
+
+        if (validUser) {
+
+            if (productFacade.findProductsByName(productname) != null) {
+                producttemp = productFacade.findProductsByName(productname).get(0);
+            } else {
+                return "Product does not exist";
+            }
+
+            if (calculations.calculateBid(producttemp, amount)) {
+                newbid.setUser(usertemp);
+                newbid.setAmount(amount);
+                newbid.setProduct(producttemp);
+                producttemp.setCurrentBid(newbid);
+                productFacade.edit(producttemp);
+                
+                return "Bid has been successfully placed";
+            } else {
+                  return "Bid is too low";
+            }
+        }
+        return "Not a valid user";
+
+    }
+    
+    
 }
+
+
+
