@@ -34,7 +34,11 @@ public class ProductInstance implements Serializable {
     
     private String productName;
     private String picture; 
-    private String features; 
+    private String features;
+    
+    //These are needed to create the web service. 
+    private int highestbid; 
+    private String sellerName; 
     
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
@@ -153,6 +157,14 @@ public class ProductInstance implements Serializable {
     public void setCategory(String category) {
         this.category = category;
     }
+    
+      public String getSellerName() {
+        return sellerName;
+    }
+
+    public void setSellerName(String sellerName) {
+        this.sellerName = sellerName;
+    }
  
     public Long getId() {
         return productId;
@@ -172,6 +184,14 @@ public class ProductInstance implements Serializable {
 
     public void setDatabaseTimestamp(Date databaseTimestamp) {
         this.databaseTimestamp = databaseTimestamp;
+    }
+    
+    public int getHighestbid() {
+        return highestbid;
+    }
+
+    public void setHighestbid(int highestbid) {
+        this.highestbid = highestbid;
     }
 
     @Override
