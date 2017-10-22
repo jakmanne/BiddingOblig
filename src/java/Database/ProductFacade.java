@@ -97,6 +97,14 @@ public class ProductFacade extends AbstractFacade<ProductInstance> {
         return results;
 
     }
+    
+    public List<ProductInstance> getAllFinishedAuctions(){
+         
+        TypedQuery<ProductInstance> query =
+        em.createQuery("SELECT c FROM ProductInstance c WHERE c.isactive = false AND c.ispurchased = true", ProductInstance.class);
+        List<ProductInstance> results = query.getResultList();
+        return results;
+    }
      
  
     
