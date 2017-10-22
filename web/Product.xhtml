@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <head>
+        <title>TODO supply a title</title>
+             <f:metadata>
+            <f:viewAction action="#{wonHandler.getProductInstance()}" />
+        </f:metadata>
+    </head>
+    <body>
+        <div>The Product you have won</div>
+        <strong>Product Name:</strong> <p>#{wonHandler.product.productName}</p>
+        <strong>Product Features:</strong><p>#{wonHandler.product.features}</p>
+        <strong>Product Imange: </strong><p>#{wonHandler.product.picture}</p>  
+
+   </body>
+</html>

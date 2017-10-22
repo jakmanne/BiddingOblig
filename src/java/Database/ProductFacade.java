@@ -87,6 +87,14 @@ public class ProductFacade extends AbstractFacade<ProductInstance> {
       ProductInstance product = query.getSingleResult();
       return product; 
     }
+     
+     public ProductInstance findFinishedById(Long productId){
+      
+      TypedQuery<ProductInstance> query =
+      em.createQuery("SELECT c FROM ProductInstance c WHERE c.isactive = false AND c.ispurchased = true AND c.productId = :Id", ProductInstance.class).setParameter("Id", productId);
+      ProductInstance product = query.getSingleResult();
+      return product; 
+     }
    
     public List<ProductInstance> findboughtproducts(UserInstance username) {
 
@@ -98,12 +106,12 @@ public class ProductFacade extends AbstractFacade<ProductInstance> {
 
     }
     
-    public List<ProductInstance> getAllFinishedAuctions(){
+    public List<ProductInstance> getFinishedAuction(){
          
         TypedQuery<ProductInstance> query =
-        em.createQuery("SELECT c FROM ProductInstance c WHERE c.isactive = false AND c.ispurchased = true", ProductInstance.class);
-        List<ProductInstance> results = query.getResultList();
-        return results;
+        em.createQuery("SELECT c FROM ProductInstance c WHERE c.isactive = false AND c.ispurchased = true ORDER BY c.databaseTimestamp", ProductInstance.class);
+        List<ProductInstance> result = query.getResultList(); 
+        return result;
     }
      
  

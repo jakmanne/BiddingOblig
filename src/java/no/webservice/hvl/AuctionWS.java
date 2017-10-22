@@ -102,7 +102,7 @@ public class AuctionWS {
 
         usertemp = validateCredentials.validationUser(userFacade.findAll(), username, password);
              
-        topic.activateTopic(productFacade.getAllFinishedAuctions());
+        topic.activateTopic(productFacade.getFinishedAuction());
 
         if (validUser) {
 
