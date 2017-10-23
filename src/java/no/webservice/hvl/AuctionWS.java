@@ -96,14 +96,14 @@ public class AuctionWS {
     @WebMethod(operationName = "placeBid")
     public String placeBid(@WebParam(name = "username") String username, @WebParam(name = "password") String password, @WebParam(name = "productname") String productname, @WebParam(name = "amount") int amount) throws Exception {
 
+        topic.activateTopic(productFacade.getFinishedAuction());
+        
         validUser = validateCredentials.validation(userFacade.findAll(), username, password);
 
         BidInstance newbid = new BidInstance();
 
         usertemp = validateCredentials.validationUser(userFacade.findAll(), username, password);
              
-        topic.activateTopic(productFacade.getFinishedAuction());
-
         if (validUser) {
 
             if (productFacade.findProductsByName(productname) != null) {

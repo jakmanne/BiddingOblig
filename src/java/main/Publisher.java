@@ -47,12 +47,10 @@ public class Publisher
        TopicPublisher topicPublisher = topicSession.createPublisher(topic);
        topicPublisher.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
                                                                            
-      
        TextMessage message = topicSession.createTextMessage();
        message.setText(temp.get(temp.size()-1).getProductName() +"/" + temp.get(temp.size()-1).getBuyer().getUsername() + "/" + temp.get(temp.size()-1).getId());                                                                      
-       topicPublisher.publish(message);  
-       
- 
+       topicPublisher.publish(message); 
+      
        // close the topic connection
        topicConn.close();
   
