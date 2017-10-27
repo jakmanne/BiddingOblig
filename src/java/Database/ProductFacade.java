@@ -9,6 +9,7 @@ import Entities.ProductInstance;
 import Entities.UserInstance;
 import java.util.Date;
 import java.util.List;
+import javax.annotation.security.PermitAll;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -25,7 +26,8 @@ import javax.ws.rs.core.MediaType;
  */
 @Stateless
 @Named
-@Path("/product")
+@Path("http://localhost:8080/BiddingOblig/product")
+@PermitAll
 public class ProductFacade extends AbstractFacade<ProductInstance> {
 
     @PersistenceContext(unitName = "BiddingObligPU")
@@ -70,7 +72,7 @@ public class ProductFacade extends AbstractFacade<ProductInstance> {
     
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @Path("all")
+    @Path("/product/all")
     public List<ProductInstance> findAllProducts(){
       Date currentDate = new Date();
       TypedQuery<ProductInstance> query =

@@ -6,21 +6,17 @@
 package Database;
 
 import Entities.ProductInstance;
-import Entities.UserInstance;
-import java.util.List;
-import javax.ejb.EJB;
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 
 
 @Stateless
+@DeclareRoles("User")
+@RolesAllowed("User")
 public class ProductCalculations {
-    
-    
-    
-    
-    public ProductCalculations(){
-        
-        
+   
+    public ProductCalculations(){   
     }
     
     //Calculates the average rating for the user. 

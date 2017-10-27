@@ -8,16 +8,12 @@ package Handler;
 import Database.ProductCalculations;
 import Database.UserFacade;
 import Entities.UserInstance;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 /**
  *

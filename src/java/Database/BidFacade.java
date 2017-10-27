@@ -6,7 +6,8 @@
 package Database;
 
 import Entities.BidInstance;
-import Entities.UserInstance;
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,6 +17,8 @@ import javax.persistence.PersistenceContext;
  * @author Jakob
  */
 @Stateless
+@DeclareRoles("User")
+@RolesAllowed("User")
 public class BidFacade extends AbstractFacade<BidInstance> {
 
     @PersistenceContext(unitName = "BiddingObligPU")

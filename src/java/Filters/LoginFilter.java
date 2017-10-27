@@ -5,13 +5,8 @@
  */
 package Filters;
 
-import Database.LoginSessionBean;
 import Handler.LoginHandler;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import javax.faces.context.FacesContext;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;

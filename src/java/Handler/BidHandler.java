@@ -12,10 +12,7 @@ import Entities.BidInstance;
 import Entities.ProductInstance;
 import Entities.UserInstance;
 import java.io.Serializable;
-import java.util.Date;
 import javax.ejb.EJB;
-import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -31,16 +28,12 @@ import javax.servlet.http.HttpSession;
 @ViewScoped
 public class BidHandler implements Serializable{
 
-  
-    
     private ProductInstance product; 
     private  BidInstance newBid; 
     private double userRating; 
     private int currentBid; 
     private UserInstance user; 
     private Long endTime; 
-    
-
     
     public BidHandler() {
         

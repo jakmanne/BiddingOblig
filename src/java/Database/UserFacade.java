@@ -5,20 +5,20 @@
  */
 package Database;
 
-import Entities.ProductInstance;
 import Entities.UserInstance;
-import java.util.Date;
-import java.util.List;
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 
 /**
  *
  * @author Jakob
  */
 @Stateless
+@DeclareRoles("User")
+@RolesAllowed("User")
 public class UserFacade extends AbstractFacade<UserInstance> {
 
     @PersistenceContext(unitName = "BiddingObligPU")

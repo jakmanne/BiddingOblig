@@ -7,18 +7,18 @@ package Database;
 
 import Entities.UserInstance;
 import Helpers.ValidateUserHelper;
+import javax.annotation.security.PermitAll;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  *
  * @author Jakob
  */
 @Stateful
+@PermitAll
 public class LoginSessionBean {
 
     private boolean loggedIn;

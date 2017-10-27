@@ -5,7 +5,6 @@
  */
 package main;
 
-import java.util.Properties;
 import javax.naming.InitialContext;                                                                          
 import javax.jms.Topic;
 import javax.jms.Session;
@@ -15,7 +14,6 @@ import javax.jms.DeliveryMode;
 import javax.jms.TopicSession;
 import javax.jms.TopicConnection;
 import javax.jms.TopicConnectionFactory;
-import javax.naming.Context;
 import Entities.ProductInstance;
 import java.util.List;
                                                                            

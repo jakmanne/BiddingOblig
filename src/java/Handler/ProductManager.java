@@ -25,7 +25,7 @@ public class ProductManager implements Serializable {
     private static final Logger logger = Logger.getLogger(ProductManager.class.getName());
     private List<ProductInstance> products;
     private Client client;
-    private final String baseUri = "http://localhost:8080/BiddingOblig/webapi";
+    private final String baseUri = "http://localhost:8080/BiddingOblig/";
     private WebTarget target;
     private ProductInstance product; 
 

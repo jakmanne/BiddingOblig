@@ -19,7 +19,7 @@
     </h:head>
     <h:body>
         <h1>All products!</h1>
-        <h:dataTable value="#{productManager.products}" 
+        <h:dataTable value="#{productManager.getProducts()}" 
                      var="product"
                      summary="Table showing all products">
             <h:column>
