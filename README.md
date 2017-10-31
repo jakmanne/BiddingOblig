@@ -1,4 +1,35 @@
-# BiddingOblig
+# BiddingOblig Assignment 3. 
+
+## Task 1
+
+First one must run the application in the browser and place a test item in the auction. To do this log in with user "test and pw "test" and create a new product. To try the SOAP web service click on deploy in the netbeans IDE and after that find the web service called AuctionWS and click "test web service". 
+
+The way we have created our database is by having activated products, this means that to list all active auctions we list all activate products. It is just the same. And also, in difference to many other submissions we already had an relatively advanced log-in system where we placed "business" logic under the Secured folder in order to prevent access. 
+
+In order to place a bid one must validate oneself with a username and passwrod, try "test" test", and after that write the name of the product you created earlier and place a bid. Look at the output in console to see if it was succesful or not. In order to get products that one can bid for press the other button. 
+
+
+## Task 2
+
+This is a little tricky. The JMS topic is only invoked when a bid is placed through the SOAP web service. This is because it is much easier to test. Also, we do not have a "web service" to automate if an auction is won, so this needs to be done manually. 
+
+a) 1. First one has to run the client project called "Buyer". In the glassfish console one might see a message that you have won a product.This is because it always list the latest product that was won in the database, (we do not have logic to prevent a message from appearing twice. 
+   2. Run the BiddingOblig and create a new product with bidding time to one minute. 
+   3. Place a bid for that product manually and wait for the time to run out.  
+   3. Run the SOAP web service and place a bid on another product. This will envoke the JMS topic which will send the message to the           client with the latest product in the database where the auction is done. 
+   4. Copy the link to the product in the browser. 
+   
+   
+ b) 1. Run the client "Enterprice Client". Make sure there are products in the database. This will get all the active auctions and start the JMS topic reciever. 
+    2. Run the BiddingOblig and create a new product with bidding time to one minute. 
+    3. Place a bid for that product manually and wait for the time to run out. 
+    4. Run the SOAP web service and place a bid on another product. This will envoke the JMS topic which will send the message to the           client with the latest product in the database where the auction is done.
+    5. The list is not updated at the client, and one can place a bid using the SOAP web service. 
+ 
+
+
+
+
 
 
 ## Nettsider
