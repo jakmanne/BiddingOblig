@@ -12,8 +12,8 @@ import javax.ejb.Stateless;
 
 
 @Stateless
-@DeclareRoles("User")
-@RolesAllowed("User")
+//@DeclareRoles("User")
+//@RolesAllowed("User")
 public class ProductCalculations {
    
     public ProductCalculations(){   
