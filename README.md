@@ -22,7 +22,7 @@ a) 1. First one has to run the client project called "Buyer". In the glassfish c
    
  b) 1. Run the client "Enterprice Client". Make sure there are products in the database (make one product with 1-2 minutes bidding time). This will get all the active auctions and start the JMS topic reciever. 
     2. Run the BiddingOblig and place a bid for the product with low bidding time. (wait for it to timeout after placing a bid). 
-    4. Run the SOAP web service and place a bid on another product. This will envoke the JMS topic which will send the message to the           client with the latest product in the database where the auction is done. It will not delete this product from the list. 
+    4. Run the SOAP web service and place a bid on another product. This will envoke the JMS topic which will send the message to the           client with the latest product in the database where the auction is done. It will now delete this product from the list at the               client. 
     5. The list is not updated at the client, and one can place a bid using the SOAP web service. 
  
 
