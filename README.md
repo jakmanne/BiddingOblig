@@ -18,14 +18,14 @@ This is a little tricky. The JMS topic is only invoked when a bid is placed thro
 a) 1. First one has to run the client project called "Buyer". In the glassfish console one might see a message that you have won a product.This is because it always list the latest product that was won in the database, (we do not have logic to prevent a message from appearing twice. 
    2. Run the BiddingOblig and create a new product with bidding time to one minute. <br />
    3. Place a bid for that product manually and wait for the time to run out.  <br />
-   3. Run the SOAP web service and place a bid on another product. This will envoke the JMS topic which will send the message to the           client with the latest product in the database where the auction is done. 
-   4. Copy the link to the product in the browser. <br />
+   4. Run the SOAP web service and place a bid on another product. This will envoke the JMS topic which will send the message to the           client with the latest product in the database where the auction is done. <br />
+   5. Copy the link to the product in the browser. <br />
    
    
- b) 1. Run the client "Enterprice Client". Make sure there are products in the database (make one product with 1-2 minutes bidding time). This will get all the active auctions and start the JMS topic reciever. 
-    2. Run the BiddingOblig and place a bid for the product with low bidding time. (wait for it to timeout after placing a bid). 
-    4. Run the SOAP web service and place a bid on another product. This will envoke the JMS topic which will send the message to the           client with the latest product in the database where the auction is done. It will now delete this product from the list at the               client. 
-    5. The list is now updated at the client, and one can place a bid using the SOAP web service. 
+ b) 1. Run the client "Enterprice Client". Make sure there are products in the database (make one product with 1-2 minutes bidding time). This will get all the active auctions and start the JMS topic reciever. <br />
+    2. Run the BiddingOblig and place a bid for the product with low bidding time. (wait for it to timeout after placing a bid). <br />
+    4. Run the SOAP web service and place a bid on another product. This will envoke the JMS topic which will send the message to the           client with the latest product in the database where the auction is done. It will now delete this product from the list at the               client. <br />
+    5. The list is now updated at the client, and one can place a bid using the SOAP web service. <br />
  
 
 
