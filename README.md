@@ -35,7 +35,7 @@ a)
 
 b) This task is also not completely implemented. Several assistants and teachers have tried to fix the problem without luck. A zip file with the problem has been sent to Fernado by email. 
 
-c) 
+c) Different roles are declared at the EJB-classes with @DeclareRoles, and the tag @RolesAllowed shows which roles that are permitted access to the given class. Some classes need to be accessed by all users (also those who are not logged in). These classes are annotated with @PermitAll. Since 3c task is connected to 3b, we have commented out the code until that task is completed. 
 
 
 
