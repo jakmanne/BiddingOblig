@@ -2,11 +2,13 @@
 
 ## Task 1
 
-First one must run the application in the browser and place a test item in the auction. To do this log in with user "test and pw "test" and create a new product. To try the SOAP web service click on deploy in the netbeans IDE and after that find the web service called AuctionWS and click "test web service". 
+a) First one must run the application in the browser and place a test item in the auction. To do this log in with user "test and pw "test" and create a new product. To try the SOAP web service click on deploy in the netbeans IDE and after that find the web service called AuctionWS and click "test web service". 
 
 The way we have created our database is by having activated products, this means that to list all active auctions we list all activate products. It is just the same. And also, in difference to many other submissions we already had an relatively advanced log-in system where we placed "business" logic under the Secured folder in order to prevent access. 
 
 In order to place a bid one must validate oneself with a username and passwrod, try "test" test", and after that write the name of the product you created earlier and place a bid. Look at the output in console to see if it was succesful or not. In order to get products that one can bid for press the other button. 
+
+b) This task is not completely implemented. Several assistants/ teachers have tried to fix the problem without luck. Hopefully you can validate this task by looking at the written code.  
 
 
 ## Task 2
