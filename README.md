@@ -29,7 +29,13 @@ a) 1. First one has to run the client project called "Buyer". In the glassfish c
  
 
 
+## Task 3
 
+a) 
+
+b) This task is also not completely implemented. Several assistants and teachers have tried to fix the problem without luck. A zip file with the problem has been sent to Fernado by email. 
+
+c) 
 
 
 
